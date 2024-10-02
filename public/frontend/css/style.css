@@ -1,0 +1,108 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+.head {
+    background: #008489;
+
+}
+
+.head .navbar .navbar-nav a {
+    color: white;
+
+}
+
+.head .navbar .navbar-nav a:hover {
+    background: #006669;
+    transition: 0.5s;
+    border-radius: 5px;
+    font-size: large;
+
+
+}
+
+.head .navbar-brand {
+
+    /* margin: 0px 0px 0px 15px; */
+    text-align: center;
+    font-family: Dancing script;
+    color: white;
+    font-size: 50px
+}
+
+.head .auth-btn {
+    background: white;
+    color: #008489;
+}
+
+.head .dropdown-menu {
+    color: #008489;
+    background: white;
+}
+
+.navbar-toggler:focus,
+.navbar-toggler:active,
+.navbar-toggler-icon:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.footer {
+    background: #303036;
+}
+
+.footer-bottom {
+    background: #343a40;
+}
+
+.footer-link li {
+    list-style-type: none;
+}
+
+.footer-link li a {
+    text-decoration: none;
+    color: white;
+}
+
+.footer-link li a:hover {
+    font-size: large;
+}
+
+/* comman */
+.line {
+    width: 120px;
+    height: 3px;
+    background-color: rgb(48, 45, 45);
+    display: inline-block;
+}
+
+.home-back {
+    background-color: #006669;
+}
+
+/* post slider */
+.post-slider {
+    border: 1px solid red;
+}
+
+.post-slider .post-wrapper {
+    border: 1px solid red;
+}
+
+.post-slider .post-wrapper .post {
+    height: 250px;
+    display: inline-block;
+    background: #05f7ff;
+}
+
+/* recent post */
+
+/* .content .main-content .post{
+    width: 95%;
+    height:270px;
+    margin: 10px auto;
+    border-radius: 5px;
+    background: white;
+} */
