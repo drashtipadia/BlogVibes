@@ -16,4 +16,8 @@ class Post extends Model
         return $this->hasMany(Category::class, 'category_id', 'category_id');
 
     }
+    public function getUser()
+    {
+        return $this->hasMany(register_user::class, 'user_id', 'user_id');
+    }
 }

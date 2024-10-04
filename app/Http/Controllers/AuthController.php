@@ -37,15 +37,19 @@ class AuthController extends Controller
             'rcpassword' => 'required|same:rpassword'
         ]);
 
+        //echo $request['rname'], $request['remail'], $request['aboutuser'], $request['rpassword'], $request['rnumber'];
+
         $newUser = new register_user();
         $newUser->name = $request['rname'];
         $newUser->email = $request['remail'];
         $newUser->about_user = $request['aboutuser'];
         $newUser->password = md5($request['rpassword']);
         $newUser->number = $request['rnumber'];
-
+        //$newUser->save();
         if ($newUser->save()) {
             return redirect('login')->with('success', 'Congrulation! You are Registered');
+        } else {
+            echo "<script> alert('Error Generate'); </script>";
         }
 
     }

@@ -16,15 +16,16 @@
                     <div class="card-header">
                         <h4>UserName</h4>
                     </div>
-                    <?php    echo $posts; ?>
+                    <?php    //   echo $posts; ?>
                     <div class="card-body">
                         <h5 class="card-title"></h5>
                         <h6>{{$posts->title}}</h6>
                         </h5>
-                        <p class="card-text">Category: {{$posts->getcategory->category_name}}</p>
+
+                        <p class="card-text">Category: {{$posts->getcategory}}</p>
                         <p class="card-text">Booking Date: {{$posts->created_at}}</p>
                         <p class="card-text">Content: {{$posts->content}} &nbsp;
-                            <a href="#">Details</a>
+                            <a href="{{url('/blog/')}}/{{$posts->post_id}}">Details</a>
                         </p>
                     </div>
                     </di>

@@ -18,7 +18,7 @@
                 </div>
                 <div>
                     <label class="form-label" for="typeEmail">Email</label>
-                    <input type="text" id="remail" name="remail" class="form-control" required />
+                    <input type="email" id="remail" name="remail" class="form-control" required />
 
                 </div>
                 <div>
@@ -43,7 +43,7 @@
                 </div>
             </div>
             <div class="card-footer text-muted">
-                <input type="reset" class="btn btn-secondary" value="Reset"></input>
+                <!-- <input type="reset" class="btn btn-secondary" value="Reset"></input> -->
                 <!-- class="btn btn-secondary" -->
                 <input type="submit" class="btn btn-primary" value="Submit"></input>
                 <!-- class="btn btn-primary" -->

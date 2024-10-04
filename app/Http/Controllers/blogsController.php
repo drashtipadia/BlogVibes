@@ -20,11 +20,19 @@ class blogsController extends Controller
     {
         $this->validate($request, ['title' => 'required', 'content' => 'required', 'blogimg' => 'mimes:png,jpg,jpeg,webp', 'tags' => 'required', 'category' => 'required', 'userid' => 'required']);
 
+        // $filename = $request->file('blogimg')->move('upload');
+
+        $filename = time() . $request->file('blogimg')->getClientOriginalName();
+        $path = 'uploads/img/';
+        $request->file('blogimg')->move($path, $filename);
+
+
+
         $newPost = new Post();
-        $filename = $request->file('blogimg')->store('upload');
         $newPost->title = $request['title'];
         $newPost->content = $request['content'];
         $newPost->image = $filename;
+        //$newPost->image = $file["blogimg"];
         $newPost->tags = $request['tags'];
         $newPost->category_id = $request['category'];
         $newPost->user_id = $request['userid'];
@@ -41,6 +49,12 @@ class blogsController extends Controller
         $postlist = Post::with('getcategory')->get();
         $postlist = compact('postlist');
         return view('Admin.adminbloglist')->with($postlist);
+    }
+    public function adminblog($id)
+    {
 
+        $posts = Post::where('post_id', $id)->with('getcategory')->with('getUser')->get();
+        $post = compact('posts');
+        return view('Admin.adminblogdetails')->with($post);
     }
 }

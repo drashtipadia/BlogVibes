@@ -70,3 +70,4 @@ Route::get('contact/delete/{id}', 'UserContactController@delete')->middleware('a
 Route::get('users', 'UsersController@display')->middleware('admin');
 //==================
 Route::get('adminBlogs', 'blogsController@adminPostList')->middleware('admin');
+Route::get('/blog/{id}', 'blogsController@adminblog')->middleware('admin');
