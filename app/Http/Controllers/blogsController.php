@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Post;
+use App\Models\register_user;
 use Illuminate\Http\Request;
 
 class blogsController extends Controller
@@ -48,13 +49,21 @@ class blogsController extends Controller
         // return view('Admin.adminbloglist')->with($postlists);
         $postlist = Post::with('getcategory')->get();
         $postlist = compact('postlist');
+
         return view('Admin.adminbloglist')->with($postlist);
     }
     public function adminblog($id)
     {
 
-        $posts = Post::where('post_id', $id)->with('getcategory')->with('getUser')->get();
-        $post = compact('posts');
-        return view('Admin.adminblogdetails')->with($post);
+        // $posts = Post::where('post_id', $id)->with('getcategory')->with('getUser')->get();
+        // $post = compact('posts');
+        // return view('Admin.adminblogdetails')->with($post);
+
+        $post = Post::where('post_id', $id)->first();
+        $user = register_user::where('user_id', $post->user_id)->first();
+        $category = Category::where('category_id', $post->category_id)->first();
+
+        $data = ['post' => $post, 'username' => $user->name, 'category' => $category->category_name];
+        return view('Admin.adminblogdetails')->with(['data' => $data]);
     }
 }
