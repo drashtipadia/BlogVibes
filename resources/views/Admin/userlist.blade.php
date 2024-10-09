@@ -24,19 +24,21 @@
         </thead>
         <tbody>
             @foreach ($users as $user)
-            <td>{{$user->user_id}}</td>
-            <td>{{$user->name}}</td>
-            <td>{{$user->email}}</td>
-            <td>{{$user->about_user}}</td>
-            <td>{{$user->password}}</td>
-            <td>{{$user->number}}</td>
-            <td>
-                @if($user->status == "1")
-                <button class="btn btn-success">Active</button>
-                @else
-                <button class="btn btn-danger">Inactive</button>
-                @endif
-            </td>
+            <tr>
+                <td>{{$user->user_id}}</td>
+                <td>{{$user->name}}</td>
+                <td>{{$user->email}}</td>
+                <td>{{$user->about_user}}</td>
+                <td>{{$user->password}}</td>
+                <td>{{$user->number}}</td>
+                <td>
+                    @if($user->status == "1")
+                    <button class="btn btn-success">Active</button>
+                    @else
+                    <button class="btn btn-danger">Inactive</button>
+                    @endif
+                </td>
+            </tr>
             @endforeach
 
         </tbody>

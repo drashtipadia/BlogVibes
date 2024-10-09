@@ -33,39 +33,100 @@
             </form>
             <div class="justify-content-center row mt-3 mb-0">
                 @if (session()->has('success'))
-                    <div class="alert alert-success w-25 p-3">
-                        {{session()->get('success')}}
-                    </div>
+                <div class="alert alert-success w-25 p-3">
+                    {{session()->get('success')}}
+                </div>
                 @endif
             </div>
         </div>
 </section>
 
 
-<div class="container pt-0">
-    <table class="table px-4 text-center">
-        <thead>
-            <tr>
-                <th>No.</th>
-                <th>Name</th>
-                <th>Update</th>
-                <th>Delete</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($category as $cat)
 
 
-                <tr id="editRowservice{{$cat->category_id}}">
-                    <td>{{$cat->category_id}}</td>
-                    <td>{{$cat->category_name}}</td>
-                    <td><a class="btn btn-primary" href=""> Edit</a></td>
-                    <td><a class="btn btn-danger" href="{{url('category/delete/')}}/{{$cat->category_id}}"> Delete</a></td>
-                </tr>
-            @endforeach
-        </tbody>
-    </table>
-</div>
 
-<script src="{{url('frontend/js/adminscript.js')}}"></script>
+<!-- ====================after====================  -->
+
+<section class="py-3">
+    <div class="container">
+        <div class="row  justify-content-center text-center ">
+            <div class="col-3">
+                <h5> ID</h5>
+            </div>
+            <div class="col-3">
+                <h5>CATEGORY</h5>
+            </div>
+
+            <div class="col-3">
+                <h5>UPDATE</h5>
+            </div>
+
+            <div class="col-3">
+                <h5>DELETE</h5>
+            </div>
+            <hr />
+        </div>
+    </div>
+</section>
+@foreach ($category as $cat)
+<section>
+    <div class="container">
+        <div class="row justify-content-center text-center" id="editRowCategory{{$cat->category_id}}">
+            <div class="col-3">
+                <h5>{{$cat->category_id}} </h5>
+            </div>
+            <div class="col-3">
+                <h5>{{$cat->category_name}}</h5>
+            </div>
+
+            <div class="col-3">
+                <h5><a href="#" class="btn btn-primary" onClick="showUpdate({{$cat->category_id}});">Update</a></h5>
+            </div>
+            <div class="col-3">
+                <a class="btn btn-danger" href="{{url('category/delete/')}}/{{$cat->category_id}}">
+                    DELETE
+                </a>
+            </div>
+
+            <hr />
+        </div>
+
+
+        <form id="editFormCategory{{$cat->category_id}}" class="row d-none  justify-content-center text-center"
+            action="{{url('updatecategory')}}" method="post">
+            {{@csrf_field()}}
+            <div class="col-3">
+                <input type="text" disabled value="{{$cat->category_id}}" class="form-control">
+                <input type="hidden" name="categoryId" value="{{$cat->category_id}}">
+            </div>
+            <div class="col-3">
+                <input type="text" name="categoryName" class="form-control" value="{{$cat->category_name}}" required>
+            </div>
+
+
+            <div class="col-3">
+                <h5><input type="submit" value="Save" class="btn btn-primary"></h5>
+
+            </div>
+            <div class="col-3">
+                <input type="button" value="Cancel" class="btn btn-dark" onClick="cancelEdit({{$cat->category_id}});">
+            </div>
+            <hr />
+        </form>
+    </div>
+</section>
+@endforeach
+<!-- ====================================== -->
 @endsection
+<script>
+function showUpdate(id) {
+    console.log(id);
+    document.getElementById("editRowCategory" + id).classList.add("d-none");
+    document.getElementById("editFormCategory" + id).classList.remove("d-none");
+}
+
+function cancelEdit(id) {
+    document.getElementById("editRowCategory" + id).classList.remove("d-none");
+    document.getElementById("editFormCategory" + id).classList.add("d-none");
+}
+</script>

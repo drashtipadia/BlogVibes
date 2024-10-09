@@ -61,6 +61,7 @@ Route::get('adminlogout', 'AdminController@logout')->middleware('admin');
 Route::get('categorydisplay', 'categoryController@display')->middleware('admin');
 Route::get('admincategory', 'categoryController@view')->middleware('admin');
 Route::post('category', 'categoryController@store')->middleware('admin');
+Route::post('updatecategory', 'categoryController@update')->middleware('admin');
 Route::get('category/delete/{id}', 'categoryController@delete')->middleware('admin');
 //=========
 Route::get('contactList', 'UserContactController@view')->middleware('admin');

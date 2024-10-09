@@ -31,7 +31,12 @@ class categoryController extends Controller
     }
     public function delete($id)
     {
-        $category = Category::find($id)->delete();
+        Category::find($id)->delete();
+        return redirect()->back();
+    }
+    public function update(Request $request)
+    {
+        Category::where('category_id', $request['categoryId'])->update(['category_name' => $request['categoryName']]);
         return redirect()->back();
     }
 }

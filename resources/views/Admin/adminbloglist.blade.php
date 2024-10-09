@@ -14,15 +14,16 @@
             <div class="col-6 p-2">
                 <div class="card">
                     <div class="card-header">
-                        <h4>UserName</h4>
+                        <h4>{{$posts->title}}</h4>
+
                     </div>
                     <?php    //   echo $posts; ?>
                     <div class="card-body">
-                        <h5 class="card-title"></h5>
-                        <h6>{{$posts->title}}</h6>
-                        </h5>
 
-                        <p class="card-text">Category: {{$posts->getcategory}}</p>
+                        <h6>User: {{$posts->getUser->name}}</h6>
+
+
+                        <p class="card-text">Category: {{$posts->getcategory->category_name}}</p>
                         <p class="card-text">Booking Date: {{$posts->created_at}}</p>
                         <p class="card-text">Content: {{$posts->content}} &nbsp;
                             <a href="{{url('/blog/')}}/{{$posts->post_id}}">Details</a>

@@ -13,11 +13,11 @@ class Post extends Model
 
     public function getcategory()
     {
-        return $this->hasMany(Category::class, 'category_id', 'category_id');
+        return $this->belongsTo(Category::class, 'category_id', 'category_id');
 
     }
     public function getUser()
     {
-        return $this->hasMany(register_user::class, 'user_id', 'user_id');
+        return $this->belongsTo(register_user::class, 'user_id', 'user_id');
     }
 }
