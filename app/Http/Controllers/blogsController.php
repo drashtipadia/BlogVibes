@@ -65,4 +65,12 @@ class blogsController extends Controller
         // $data = ['post' => $post, 'username' => $user->name, 'category' => $category->category_name];
         // return view('Admin.adminblogdetails')->with(['data' => $data]);
     }
+
+    public function userbloglist($id)
+    {
+        echo $id;
+        $posts = Post::where('category_id', $id)->with('getcategory')->with('getUser')->get();
+        print_r($posts);
+
+    }
 }

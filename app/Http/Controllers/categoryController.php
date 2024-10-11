@@ -39,4 +39,10 @@ class categoryController extends Controller
         Category::where('category_id', $request['categoryId'])->update(['category_name' => $request['categoryName']]);
         return redirect()->back();
     }
+    public function categorylist()
+    {
+        $category = Category::all();
+        $data = compact('category');
+        return view('category')->with($data);
+    }
 }

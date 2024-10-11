@@ -26,9 +26,7 @@ Route::get('about', function () {
     return view('about');
 });
 
-Route::get('category', function () {
-    return view('category');
-});
+Route::get('category', 'categoryController@categorylist');
 Route::get('login', function () {
     return view('login');
 });
@@ -43,6 +41,10 @@ Route::post('user_login', 'AuthController@login');
 Route::post('user_register', 'AuthController@userRegister');
 Route::post('contact', 'UserContactController@store');
 Route::get('logout', 'AuthController@logout');
+
+
+
+Route::get('bloglist/{id?}', 'blogsController@userbloglist');
 
 
 

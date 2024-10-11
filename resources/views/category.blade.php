@@ -10,13 +10,15 @@
             </div>
         </div>
     </div>
-    <div class="container">
-        <div class="card" style="width: 18rem;">
-            <img src="{{url('/frontend/images/img2.jpg')}}" class="card-img-top" alt="...">
-            <div class="card-body">
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                    card's content.</p>
-            </div>
+    <div class="container p-5 d-flex justify-content-center">
+        <div class="row g-3">
+            @foreach ($category as $val)
+
+
+            <a href="{{url('bloglist')}}/{{$val->category_id}}" class="btn btn-primary">{{$val->category_name}}</a>
+
+
+            @endforeach
         </div>
     </div>
 </section>
