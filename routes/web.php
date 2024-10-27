@@ -45,7 +45,7 @@ Route::get('logout', 'AuthController@logout');
 
 
 Route::get('bloglist/{id?}', 'blogsController@userbloglist');
-
+Route::get('blogdetails/{id}', 'blogsController@fullblog');
 
 
 // ------------ADMIN-----------

@@ -1,5 +1,5 @@
-@extends('admin.layout.main')
-@section('admin-section')
+@extends('layouts.main')
+@section('main-section')
 
 <section>
     <div class="container mt-3">

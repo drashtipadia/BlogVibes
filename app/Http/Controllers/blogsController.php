@@ -68,9 +68,17 @@ class blogsController extends Controller
 
     public function userbloglist($id)
     {
-        echo $id;
+
         $posts = Post::where('category_id', $id)->with('getcategory')->with('getUser')->get();
-        print_r($posts);
+        $posts = compact('posts');
+        return view('bloglist')->with($posts);
+
+    }
+    public function fullblog($id)
+    {
+        $posts = Post::where('post_id', $id)->with('getcategory')->with('getUser')->get();
+        $posts = compact('posts');
+        return view('fullblog')->with($posts);
 
     }
 }
