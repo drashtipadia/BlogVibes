@@ -28,21 +28,22 @@
                     <a href="{{url('/')}}" class="nav-item nav-link ">Home</a>
                     <a href="{{url('category')}}" class="nav-item nav-link">Category</a>
                     <a href="{{url('about')}}" class="nav-item nav-link">About</a>
+                    <a href="{{url('blogs')}}" class="nav-item nav-link">Blogs</a>
                 </div>
 
 
 
                 @if (session()->has('id'))
 
-                <a class="btn auth-btn px-4" type="button" href="#">{{session('name')}}</a>
-                <a class="btn auth-btn px-4 m-2" type="button" href="{{url('createblog')}}">Create Blog</a>
-                <a class="btn auth-btn px-4" type="button" href="{{url('logout')}}">Logout</a>
+                    <a class="btn auth-btn px-4" type="button" href="{{url('profile')}}">{{session('name')}}</a>
+                    <a class="btn auth-btn px-4 m-2" type="button" href="{{url('createblog')}}">Create Blog</a>
+                    <a class="btn auth-btn px-4" type="button" href="{{url('logout')}}">Logout</a>
 
 
 
                 @else
-                <a class="btn auth-btn px-4" type="button" href="{{url('login')}}">Login</a>
-                <a class="btn auth-btn px-4 m-2" type="button" href="{{url('registration')}}">Register</a>
+                    <a class="btn auth-btn px-4" type="button" href="{{url('login')}}">Login</a>
+                    <a class="btn auth-btn px-4 m-2" type="button" href="{{url('registration')}}">Register</a>
 
                 @endif
 

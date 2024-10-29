@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Post;
-use App\Models\register_user;
+
 use Illuminate\Http\Request;
 
 class blogsController extends Controller
@@ -80,5 +80,18 @@ class blogsController extends Controller
         $posts = compact('posts');
         return view('fullblog')->with($posts);
 
+    }
+    public function searchquery(Request $request)
+    {
+        $srch = $request->input('search');
+        $posts = Post::where('tags', 'like', "%$srch%")->get();
+        $posts = compact('posts');
+        return view('bloglist')->with($posts);
+    }
+    public function allblog()
+    {
+        $posts = Post::all();
+        $posts = compact('posts');
+        return view('bloglist')->with($posts);
     }
 }

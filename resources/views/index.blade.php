@@ -209,8 +209,10 @@
         </div>
         <div class="sidebar col-4">
             <div class="row">
-                <form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <form class="d-flex" method="post" action="{{url('/searching')}}">
+                    {{@csrf_field()}}
+                    <input class="form-control me-2" type="search" name="search" placeholder="Search"
+                        aria-label="Search">
                     <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
             </div>

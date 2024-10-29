@@ -24,7 +24,16 @@
 
             </div>
             <div class="card-footer">
-
+                <div class="container">
+                    <div class="row">
+                        <p>Richt jhefb</p>
+                        <p>bdhjewb hbehjf fjhre</p>
+                    </div>
+                    <form>
+                        <input type="text" name="comment">
+                        <input type="submit" value="comment">
+                    </form>
+                </div>
             </div>
 
 

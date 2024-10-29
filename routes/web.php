@@ -27,6 +27,10 @@ Route::get('about', function () {
 });
 
 Route::get('category', 'categoryController@categorylist');
+Route::get('blogs', 'blogsController@allblog');
+
+
+
 Route::get('login', function () {
     return view('login');
 });
@@ -42,10 +46,15 @@ Route::post('user_register', 'AuthController@userRegister');
 Route::post('contact', 'UserContactController@store');
 Route::get('logout', 'AuthController@logout');
 
+Route::get('profile', 'UsersController@userprofile');
+
 
 
 Route::get('bloglist/{id?}', 'blogsController@userbloglist');
 Route::get('blogdetails/{id}', 'blogsController@fullblog');
+
+Route::post('/searching', 'blogsController@searchquery');
+
 
 
 // ------------ADMIN-----------
