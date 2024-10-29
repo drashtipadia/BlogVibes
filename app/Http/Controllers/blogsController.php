@@ -94,4 +94,21 @@ class blogsController extends Controller
         $posts = compact('posts');
         return view('bloglist')->with($posts);
     }
+    public function updateblog($id)
+    {
+        $posts = Post::where('post_id', $id)->get();
+        $categorys = Category::all();
+        $posts = compact('posts', 'categorys');
+        return view('updateblog')->with($posts);
+
+    }
+    public function deleteblog($id)
+    {
+        $res = Post::find($id)->delete();
+        if ($res === 1) {
+            return redirect();
+        } else {
+            echo "<script> alert('something wrong'); </script>";
+        }
+    }
 }

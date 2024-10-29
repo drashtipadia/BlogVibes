@@ -6,7 +6,7 @@
     <div class="row bg-light">
         <div class="col-6">
             @foreach ($user as $val)
-
+            <h1>Profile</h1>
             <p>Name: <span class="fs-6">{{$val->name}}</span></p>
             <p>Email: <span class="fs-6">{{$val->email}}</span></p>
             <p>Your Info. : <span class="fs-6">{{$val->about_user}}</span></p>
@@ -16,7 +16,7 @@
             @endforeach
         </div>
         <div class="col-6">
-            <h6 class="text-center">Blogs</h6>
+            <h1 class="text-center ">Blogs</h1>
             @foreach ($post as $data)
             <div class="row p-3">
                 <div class="col-3">
@@ -24,8 +24,10 @@
                 </div>
                 <div class="col-3"><a href="{{url('blogdetails/')}}/{{$data->post_id}}" class="btn btn-info">View</a>
                 </div>
-                <div class="col-3"><a class="btn btn-primary">Update</a></div>
-                <div class="col-3"><a href="{{$data->post_id}}" class="btn btn-danger">Delete</a></div>
+                <div class="col-3"><a href="{{url('blogupdate/')}}/{{$data->post_id}}"
+                        class="btn btn-primary">Update</a></div>
+                <div class="col-3"><a href="{{url('blogdelete/')}}/{{$data->post_id}}" class="btn btn-danger">Delete</a>
+                </div>
 
 
 

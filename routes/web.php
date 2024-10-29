@@ -52,6 +52,8 @@ Route::get('profile', 'UsersController@userprofile');
 
 Route::get('bloglist/{id?}', 'blogsController@userbloglist');
 Route::get('blogdetails/{id}', 'blogsController@fullblog');
+Route::get('blogupdate/{id}', 'blogsController@updateblog');
+Route::get('blogdelete/{id}', 'blogsController@deleteblog');
 
 Route::post('/searching', 'blogsController@searchquery');
 
