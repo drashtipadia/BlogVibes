@@ -19,26 +19,20 @@
                 <th>About user</th>
                 <th>password</th>
                 <th>Number</th>
-                <th>Status</th>
+
             </tr>
         </thead>
         <tbody>
             @foreach ($users as $user)
-            <tr>
-                <td>{{$user->user_id}}</td>
-                <td>{{$user->name}}</td>
-                <td>{{$user->email}}</td>
-                <td>{{$user->about_user}}</td>
-                <td>{{$user->password}}</td>
-                <td>{{$user->number}}</td>
-                <td>
-                    @if($user->status == "1")
-                    <button class="btn btn-success">Active</button>
-                    @else
-                    <button class="btn btn-danger">Inactive</button>
-                    @endif
-                </td>
-            </tr>
+                <tr>
+                    <td>{{$user->user_id}}</td>
+                    <td>{{$user->name}}</td>
+                    <td>{{$user->email}}</td>
+                    <td>{{$user->about_user}}</td>
+                    <td>{{$user->password}}</td>
+                    <td>{{$user->number}}</td>
+
+                </tr>
             @endforeach
 
         </tbody>

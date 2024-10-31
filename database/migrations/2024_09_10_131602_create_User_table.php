@@ -20,7 +20,6 @@ class CreateUserTable extends Migration
             $table->text('about_user');
             $table->string('password');
             $table->string('number');
-            $table->boolean('status')->default(1);
             $table->timestamps();
         });
     }
