@@ -3,6 +3,12 @@
 @section('main-section')
 
 <div class="contianer p-5">
+    @if (session()->has('bloguptodate'))
+        <div class="alert alert-success">
+            <p>{{session()->get('bloguptodate')}}</p>
+        </div>
+    @endif
+
     <div class="row bg-light">
         <div class="col-6">
             @foreach ($user as $val)

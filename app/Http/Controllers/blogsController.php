@@ -33,7 +33,6 @@ class blogsController extends Controller
         $newPost->title = $request['title'];
         $newPost->content = $request['content'];
         $newPost->image = $filename;
-        //$newPost->image = $file["blogimg"];
         $newPost->tags = $request['tags'];
         $newPost->category_id = $request['category'];
         $newPost->user_id = $request['userid'];
@@ -42,6 +41,42 @@ class blogsController extends Controller
         }
 
     }
+
+    public function update(Request $request)
+    {
+
+        //echo $request['postid'], $request['title'], $request['content'], $request['tags'], $request['category'] . "<br>";
+        if ($request['blogimg'] === null) {
+
+            $res = Post::where('post_id', $request['postid'])->update(['title' => $request['title'], 'content' => $request['content'], 'tags' => $request['tags'], 'category_id' => $request['category']]);
+            //echo $res;
+
+        } else {
+            $updatefile = time() . $request->file('blogimg')->getClientOriginalName();
+            $path = 'uploads/img/';
+            $request->file('blogimg')->move($path, $updatefile);
+            $res = Post::where('post_id', $request['postid'])->update(['title' => $request['title'], 'content' => $request['content'], 'image' => $updatefile, 'tags' => $request['tags'], 'category_id' => $request['category']]);
+        }
+        if ($res === 1) {
+            //echo "<script> alert('blog update'); </script>";
+            return redirect('profile')->with('bloguptodate', 'Blog Update');
+        }
+
+    }
+
+    public function deleteblog($id)
+    {
+        $res = Post::find($id)->delete();
+        if ($res === 1) {
+            return redirect();
+        } else {
+            echo "<script> alert('something wrong'); </script>";
+        }
+    }
+
+
+
+
     public function adminPostList()
     {
         // $postlist = Post::all();
@@ -102,13 +137,5 @@ class blogsController extends Controller
         return view('updateblog')->with($posts);
 
     }
-    public function deleteblog($id)
-    {
-        $res = Post::find($id)->delete();
-        if ($res === 1) {
-            return redirect();
-        } else {
-            echo "<script> alert('something wrong'); </script>";
-        }
-    }
+
 }

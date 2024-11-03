@@ -1,9 +1,9 @@
 @extends('layouts.main')
 @section('main-section')
 
-<div class="container justify-content-between p-5">
+<div class="container d-flex justify-content-center p-5">
 
-    <form method="post" action="{{url('user_register')}}">
+    <form method="post" action="{{url('user_register')}}" style="width: 600px;">
         {{@csrf_field()}}
         <div class="card border-info">
             <div class="card-header text-center">
@@ -42,10 +42,10 @@
 
                 </div>
             </div>
-            <div class="card-footer text-muted">
+            <div class="card-footer d-flex justify-content-center p-3">
                 <!-- <input type="reset" class="btn btn-secondary" value="Reset"></input> -->
                 <!-- class="btn btn-secondary" -->
-                <input type="submit" class="btn btn-primary" value="Submit"></input>
+                <input type="submit" class="btn btn-primary w-50" value="Submit"></input>
                 <!-- class="btn btn-primary" -->
             </div>
         </div>

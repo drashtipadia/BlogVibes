@@ -1,8 +1,8 @@
 @extends('layouts.main')
 @section('main-section')
-<div class="container justify-content-between p-5">
+<div class="container d-flex justify-content-center p-5 ">
 
-    <form method="post" action="{{url('user_login')}}" class="m-4">
+    <form method="post" action="{{url('user_login')}}" style="width: 600px;">
         {{@csrf_field()}}
         <div class="card border-info">
             <div class="card-header text-center">
@@ -23,7 +23,8 @@
                 @endif
                 <div>
                     <label class="form-label" for="typeEmail">Email</label>
-                    <input type="text" id="" name="loginemail" class="form-control" required />
+                    <input type="text" id="" name="loginemail" class="form-control" />
+
 
                 </div>
                 <div>
@@ -32,8 +33,8 @@
 
                 </div>
             </div>
-            <div class="card-footer text-muted">
-                <button type="submit" class="btn btn-primary">login</button>
+            <div class="card-footer d-flex text-muted justify-content-center p-3">
+                <button type="submit" class="btn btn-primary w-50 ">Login</button>
             </div>
         </div>
     </form>

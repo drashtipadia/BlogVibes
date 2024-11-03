@@ -29,8 +29,11 @@
                         <p>Richt jhefb</p>
                         <p>bdhjewb hbehjf fjhre</p>
                     </div>
-                    <form>
-                        <input type="text" name="comment">
+                    <form method="post" action="{{url('addcomment')}}">
+                        {{@csrf_field()}}
+                        <input type="text" name="comment" required />
+                        <input type="text" hidden name="postid" value="{{$val->post_id}}" />
+                        <input type="text" hidden name="userid" value="{{session('id')}}" />
                         <input type="submit" value="comment">
                     </form>
                 </div>

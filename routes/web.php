@@ -37,29 +37,37 @@ Route::get('login', function () {
 Route::get('registration', function () {
     return view('registration');
 });
-Route::get('createblog', 'blogsController@display')->middleware('user');
 
-Route::post('addblog', 'blogsController@store')->middleware('user');
 
 Route::post('user_login', 'AuthController@login');
 Route::post('user_register', 'AuthController@userRegister');
 Route::post('contact', 'UserContactController@store');
 Route::get('logout', 'AuthController@logout');
 
-Route::get('profile', 'UsersController@userprofile');
+Route::get('profile', 'UsersController@userprofile')->middleware('user');
 
+
+//blogs
+
+Route::get('createblog', 'blogsController@display')->middleware('user');
+
+Route::post('addblog', 'blogsController@store')->middleware('user');
+Route::post('updateblog', 'blogsController@update')->middleware('user');
 
 
 Route::get('bloglist/{id?}', 'blogsController@userbloglist');
 Route::get('blogdetails/{id}', 'blogsController@fullblog');
-Route::get('blogupdate/{id}', 'blogsController@updateblog');
-Route::get('blogdelete/{id}', 'blogsController@deleteblog');
+Route::get('blogupdate/{id}', 'blogsController@updateblog')->middleware('user');
+Route::get('blogdelete/{id}', 'blogsController@deleteblog')->middleware('user');
 
 Route::post('/searching', 'blogsController@searchquery');
 
 
+//comment
+Route::post('addcomment', 'commentController@store')->middleware('user');
 
-// ------------ADMIN-----------
+
+// ------------ADMIN----------------------------------------------------------------------------
 
 
 Route::get('admin', function () {

@@ -37,7 +37,7 @@
                     <ul class="footer-link">
                         <li><a href="{{url('/')}}">Home</a></li>
                         <li><a href="{{url('about')}}">About us</a></li>
-                        <li><a href="#">Blogs</a></li>
+                        <li><a href="{{url('blogs')}}">Blogs</a></li>
                         <li><a href="{{url('category')}}">Category</a></li>
                     </ul>
                 </div>
@@ -49,11 +49,11 @@
                         {{@csrf_field()}}
                         <div class="mb-3">
                             <input type="email" class="form-control" name="contactemail" aria-describedby="emailHelp"
-                                placeholder="Your Email Address">
+                                placeholder="Your Email Address" required>
                         </div>
                         <div class="mb-3">
                             <textarea class="form-control" type="text" name="contactmessage" row="3"
-                                placeholder="Your Message here.."></textarea>
+                                placeholder="Your Message here.." required></textarea>
 
                         </div>
 
