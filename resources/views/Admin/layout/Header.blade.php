@@ -32,7 +32,7 @@
                     <a class="nav-link" href="{{url('categorydisplay')}}">Category</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Comments</a>
+                    <a class="nav-link" href="{{url('admincomments')}}">Comments</a>
                 </li>
 
                 <li class="nav-item">

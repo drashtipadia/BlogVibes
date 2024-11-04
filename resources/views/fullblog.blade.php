@@ -26,8 +26,12 @@
             <div class="card-footer">
                 <div class="container">
                     <div class="row">
-                        <p>Richt jhefb</p>
-                        <p>bdhjewb hbehjf fjhre</p>
+                        @foreach ($comments as $com)
+                            <p>{{$com->comment_id}}</p>
+                            <p>{{$com->comments}}</p>
+                            <p>{{$com->get_user->name}}</p>
+                        @endforeach
+
                     </div>
                     <form method="post" action="{{url('addcomment')}}">
                         {{@csrf_field()}}

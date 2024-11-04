@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Category;
+use App\Models\Comment;
 use App\Models\Post;
 
 use Illuminate\Http\Request;
@@ -112,8 +113,9 @@ class blogsController extends Controller
     public function fullblog($id)
     {
         $posts = Post::where('post_id', $id)->with('getcategory')->with('getUser')->get();
-        $posts = compact('posts');
-        return view('fullblog')->with($posts);
+        $comments = Comment::where('post_id', $id)->with('get_user')->get();
+        $data = compact('posts', 'comments');
+        return view('fullblog')->with($data);
 
     }
     public function searchquery(Request $request)

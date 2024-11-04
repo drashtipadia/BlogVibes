@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Comment;
 use Illuminate\Http\Request;
 
+
 class commentController extends Controller
 {
     //
@@ -19,5 +20,10 @@ class commentController extends Controller
             echo "<script>  alert('comment add');</script>";
 
         }
+        return redirect('blogdetails/' . $request['postid']);
+    }
+    public function admincommentlist()
+    {
+
     }
 }

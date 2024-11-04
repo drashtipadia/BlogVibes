@@ -56,3 +56,10 @@
 .dropdowncolor ul li a {
     color: black !important;
 }
+
+.line {
+    width: 120px;
+    height: 3px;
+    background-color: rgb(48, 45, 45);
+    display: inline-block;
+}
