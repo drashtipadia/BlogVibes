@@ -1,43 +1,36 @@
 @extends('admin.layout.main')
 @section('admin-section')
 
-
-
-<section class="mt-2">
-    <div class="container d-flex justify-content-center">
-        <h1 class="m-auto">Users</h1>
-    </div>
-</section>
-
-<div class="container pt-4">
-    <table class="table text-center">
-        <thead>
-            <tr>
-                <th>No.</th>
-                <th>Name</th>
-                <th>Email</th>
-                <th>About user</th>
-                <th>password</th>
-                <th>Number</th>
-
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($users as $user)
-                <tr>
-                    <td>{{$user->user_id}}</td>
-                    <td>{{$user->name}}</td>
-                    <td>{{$user->email}}</td>
-                    <td>{{$user->about_user}}</td>
-                    <td>{{$user->password}}</td>
-                    <td>{{$user->number}}</td>
-
-                </tr>
-            @endforeach
-
-        </tbody>
-    </table>
+<div class="container d-flex  justify-content-center p-4">
+    <h1 class="m-auto">User</h1>
 </div>
 
+<section>
+    <div class="container bg-light justify-content-center text-center p-3">
+        <div class="row  fs-5 fw-bold ">
+            <div class="col-1">No.</div>
+            <div class="col-2">Name</div>
+            <div class="col-2">Email</div>
+            <div class="col-2">About User</div>
+            <div class="col-3">Password</div>
+            <div class="col-2">Number</div>
+
+        </div>
+        <hr />
+        @foreach ($users as $user)
+            <div class="row">
+                <div class="col-1">{{$user->user_id}}</div>
+                <div class="col-2">{{$user->name}}</div>
+                <div class="col-2">{{$user->email}}</div>
+                <div class="col-2">{{$user->about_user}}</div>
+                <div class="col-3">{{$user->password}}</div>
+                <div class="col-2">{{$user->number}}</div>
+            </div>
+            <hr />
+        @endforeach
+
+
+    </div>
+</section>
 
 @endsection

@@ -9,52 +9,55 @@
 
 
 <section>
-    <div class="container bg-light p-3">
-        <div class="row  justify-content-center text-center ">
+    <div class="container justify-content-center text-center bg-light p-3">
+        <div class="row fs-5 fw-bold  ">
             <div class="col-2">
-                <h4>No.</h4>
+                No.
             </div>
             <div class="col-2">
-                <h4>Title</h4>
+                Title
             </div>
             <div class="col-2">
-                <h4>User</h4>
+                User
             </div>
             <div class="col-2">
-                <h4>Category</h4>
+                Category
             </div>
             <div class="col-2">
-                <h4>Date</h4>
+                Date
             </div>
             <div class="col-2">
-                <h4>Details</h4>
+                Details
             </div>
 
         </div>
         <hr />
 
         @foreach ($postlist as $posts)
-            <div class="row justify-content-center text-center p-0">
+            <div class="row ">
                 <div class="col-2">
-                    <p>{{$posts->post_id}}</p>
+                    <h5>{{$posts->post_id}}</h5>
                 </div>
                 <div class="col-2">
-                    <p>{{$posts->title}}</p>
+                    <h5>{{$posts->title}}</h5>
                 </div>
                 <div class="col-2">
-                    <p>{{$posts->getuser->name}}</p>
+                    <h5>{{$posts->getuser->name}}</h5>
                 </div>
                 <div class="col-2">
-                    <p>{{$posts->getcategory->category_name}}</p>
+                    <h5>{{$posts->getcategory->category_name}}</h5>
                 </div>
                 <div class="col-2">
-                    <p>{{$posts->created_at}}</p>
+                    <h5>
+                        {{$posts->created_at->format('d-M-Y')}}
+                    </h5>
                 </div>
                 <div class="col-2">
                     <a href="{{url('/blog/')}}/{{$posts->post_id}}">Read More</a>
                 </div>
-                <hr />
+
             </div>
+            <hr />
 
         @endforeach
     </div>

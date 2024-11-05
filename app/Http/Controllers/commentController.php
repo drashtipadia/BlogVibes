@@ -24,6 +24,8 @@ class commentController extends Controller
     }
     public function admincommentlist()
     {
-
+        $com = Comment::with('get_post')->with('get_user')->get();
+        $data = compact('com');
+        return view('Admin.admincomments')->with($data);
     }
 }
