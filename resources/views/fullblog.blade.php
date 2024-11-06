@@ -15,7 +15,7 @@
             <div class="card-body">
 
                 <p>content: {{$val->content}}</p>
-                <p> Image : <img src="{{url('/uploads/img/' . $val->image)}}" height="400px" /></p>
+                <p> Image : <img src="{{url('/uploads/' . $val->image)}}" height="400px" /></p>
                 <p>Tags: {{$val->tags}}</p>
                 <p>Category:{{$val->getcategory->category_name}}</p>
                 <p>User:{{$val->getUser->name}}</p>
@@ -27,9 +27,9 @@
                 <div class="container">
                     <div class="row">
                         @foreach ($comments as $com)
-                            <p>{{$com->comment_id}}</p>
-                            <p>{{$com->comments}}</p>
-                            <p>{{$com->get_user->name}}</p>
+                        <p>{{$com->comment_id}}</p>
+                        <p>{{$com->comments}}</p>
+                        <p>{{$com->get_user->name}}</p>
                         @endforeach
 
                     </div>

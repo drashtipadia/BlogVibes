@@ -25,7 +25,7 @@ class blogsController extends Controller
         // $filename = $request->file('blogimg')->move('upload');
 
         $filename = time() . $request->file('blogimg')->getClientOriginalName();
-        $path = 'uploads/img/';
+        $path = 'uploads/';
         $request->file('blogimg')->move($path, $filename);
 
 
@@ -54,7 +54,7 @@ class blogsController extends Controller
 
         } else {
             $updatefile = time() . $request->file('blogimg')->getClientOriginalName();
-            $path = 'uploads/img/';
+            $path = 'uploads/';
             $request->file('blogimg')->move($path, $updatefile);
             $res = Post::where('post_id', $request['postid'])->update(['title' => $request['title'], 'content' => $request['content'], 'image' => $updatefile, 'tags' => $request['tags'], 'category_id' => $request['category']]);
         }
