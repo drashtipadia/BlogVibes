@@ -21,6 +21,7 @@ class CreateCommentTable extends Migration
             $table->foreign('post_id')->references('post_id')->on('post')->onDelete('cascade')->onUpdate('cascade');
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('user_id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->boolean('com_status')->default(1);
             $table->timestamps();
 
         });

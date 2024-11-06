@@ -105,7 +105,7 @@ class blogsController extends Controller
     public function userbloglist($id)
     {
 
-        $posts = Post::where('category_id', $id)->with('getcategory')->with('getUser')->get();
+        $posts = Post::where('category_id', $id)->where('status', '=', '1')->with('getcategory')->with('getUser')->get();
         $posts = compact('posts');
         return view('bloglist')->with($posts);
 
@@ -121,13 +121,13 @@ class blogsController extends Controller
     public function searchquery(Request $request)
     {
         $srch = $request->input('search');
-        $posts = Post::where('tags', 'like', "%$srch%")->get();
+        $posts = Post::where('tags', 'like', "%$srch%")->where('status', '=', '1')->get();
         $posts = compact('posts');
         return view('bloglist')->with($posts);
     }
     public function allblog()
     {
-        $posts = Post::all();
+        $posts = Post::where('status', '=', '1')->get();
         $posts = compact('posts');
         return view('bloglist')->with($posts);
     }

@@ -24,6 +24,7 @@ class CreatePostTable extends Migration
             $table->foreign('category_id')->references('category_id')->on('category')->onDelete('cascade')->onUpdate('cascade');
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('user_id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->boolean('status')->default(1);
             $table->timestamps();
         });
     }
