@@ -1,10 +1,22 @@
 @extends('admin.layout.main')
+@push('title')
+    <title>Blog List</title>
+@endpush
+
+
 @section('admin-section')
 
 
 <div class="container d-flex  justify-content-center p-4">
     <h1 class="m-auto">Blogs</h1>
 
+</div>
+<div class="justify-content-center m-3">
+    @if (session()->has('statuschange'))
+        <div class="alert alert-primary w-25 p-3">
+            {{session()->get('statuschange')}}
+        </div>
+    @endif
 </div>
 
 
@@ -37,37 +49,37 @@
         <hr />
 
         @foreach ($postlist as $posts)
-        <div class="row ">
-            <div class="col-1">
-                <h5>{{$posts->post_id}}</h5>
-            </div>
-            <div class="col-2">
-                <h5>{{$posts->title}}</h5>
-            </div>
-            <div class="col-2">
-                <h5>{{$posts->getuser->name}}</h5>
-            </div>
-            <div class="col-2">
-                <h5>{{$posts->getcategory->category_name}}</h5>
-            </div>
-            <div class="col-2">
-                <h5>
-                    {{$posts->created_at->format('d-M-Y')}}
-                </h5>
-            </div>
-            <div class="col-2">
-                <a href="{{url('/blog/')}}/{{$posts->post_id}}">Read More</a>
-            </div>
-            <div class="col-1">
-                @if ($posts->status === 1)
-                <a href="#" class="btn btn-success">Active</a>
-                @else
-                <a href="#" class="btn btn-danger">Hide</a>
-                @endif
-            </div>
+            <div class="row ">
+                <div class="col-1">
+                    <h5>{{$posts->post_id}}</h5>
+                </div>
+                <div class="col-2">
+                    <h5>{{$posts->title}}</h5>
+                </div>
+                <div class="col-2">
+                    <h5>{{$posts->getuser->name}}</h5>
+                </div>
+                <div class="col-2">
+                    <h5>{{$posts->getcategory->category_name}}</h5>
+                </div>
+                <div class="col-2">
+                    <h5>
+                        {{$posts->created_at->format('d-M-Y')}}
+                    </h5>
+                </div>
+                <div class="col-2">
+                    <a href="{{url('/blog/')}}/{{$posts->post_id}}">Read More</a>
+                </div>
+                <div class="col-1">
+                    @if ($posts->status === 1)
+                        <a href="{{url('blogstatuschange/')}}/{{$posts->post_id}}" class="btn btn-success">Active</a>
+                    @else
+                        <a href="{{url('blogstatuschange/')}}/{{$posts->post_id}}" class="btn btn-danger">Hide</a>
+                    @endif
+                </div>
 
-        </div>
-        <hr />
+            </div>
+            <hr />
 
         @endforeach
     </div>

@@ -1,18 +1,21 @@
 @extends('layouts.main')
+@push('title')
+    <title>Blog</title>
+@endpush
 @section('main-section')
 
 <section>
-    <div class="container mt-3">
-        <div class="card">
-            @foreach ($posts as $val)
+    <div class="container justify-content-center p-5">
 
-            @endforeach
+        @foreach ($posts as $val)
 
 
-            <div class="card-header">
+
+
+            <div class="">
                 {{$val->title}}
             </div>
-            <div class="card-body">
+            <div class="">
 
                 <p>content: {{$val->content}}</p>
                 <p> Image : <img src="{{url('/uploads/' . $val->image)}}" height="400px" /></p>
@@ -23,28 +26,29 @@
 
 
             </div>
-            <div class="card-footer">
-                <div class="container">
-                    <div class="row">
-                        @foreach ($comments as $com)
-                        <p>{{$com->comment_id}}</p>
-                        <p>{{$com->comments}}</p>
-                        <p>{{$com->get_user->name}}</p>
-                        @endforeach
+        @endforeach
+        <div class="">
+            <div class="container bg-light">
+                <div class="row">
+                    @foreach ($comments as $com)
+                        <p><i class="fa-solid fa-user"></i> &nbsp;{{$com->get_user->name}}</p>
+                        <p class="">{{$com->comments}}</p>
 
-                    </div>
-                    <form method="post" action="{{url('addcomment')}}">
-                        {{@csrf_field()}}
-                        <input type="text" name="comment" required />
-                        <input type="text" hidden name="postid" value="{{$val->post_id}}" />
-                        <input type="text" hidden name="userid" value="{{session('id')}}" />
-                        <input type="submit" value="comment">
-                    </form>
+                    @endforeach
+
                 </div>
+                <form method="post" action="{{url('addcomment')}}">
+                    {{@csrf_field()}}
+                    <input type="text" name="comment" required />
+                    <input type="text" hidden name="postid" value="{{$val->post_id}}" />
+                    <input type="text" hidden name="userid" value="{{session('id')}}" />
+                    <input type="submit" value="comment">
+                </form>
             </div>
-
-
         </div>
+
+
+
     </div>
 
 </section>

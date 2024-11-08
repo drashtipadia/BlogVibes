@@ -1,5 +1,9 @@
 @extends('layouts.main')
+@push('title')
+<title>Index</title>
+@endpush
 @section('main-section')
+
 <!-- page Wrapper -->
 <!-- <section class="container">
         <div class="post-slider">

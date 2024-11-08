@@ -6,11 +6,14 @@ use Illuminate\Http\Request;
 
 class categoryController extends Controller
 {
-    //
-    public function display()
+
+    public function blogcreate()
     {
 
-        return redirect('admincategory');
+        $category = new Category();
+        $categorys = Category::all();
+        $data = compact('categorys');
+        return view('createblog')->with($data);
     }
     public function view()
     {

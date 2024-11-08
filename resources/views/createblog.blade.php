@@ -1,4 +1,7 @@
 @extends('layouts.main')
+@push('title')
+<title>Create Blog</title>
+@endpush
 @section('main-section')
 <div class="container justify-content-between p-5">
 

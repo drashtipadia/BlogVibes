@@ -1,8 +1,9 @@
 @extends('admin.layout.main')
+@push('title')
+<title>Categorys</title>
+@endpush
+
 @section('admin-section')
-
-
-
 
 <div class="container d-flex justify-content-center p-3">
     <h1 class="m-0">Category</h1>
@@ -33,9 +34,9 @@
             </form>
             <div class="justify-content-center row mt-3 mb-0">
                 @if (session()->has('success'))
-                    <div class="alert alert-success w-25 p-3">
-                        {{session()->get('success')}}
-                    </div>
+                <div class="alert alert-success w-25 p-3">
+                    {{session()->get('success')}}
+                </div>
                 @endif
             </div>
         </div>
@@ -70,48 +71,48 @@
 
         @foreach ($category as $cat)
 
-            <div class="row" id="editRowCategory{{$cat->category_id}}">
-                <div class="col-3">
-                    <h5>{{$cat->category_id}} </h5>
-                </div>
-                <div class="col-3">
-                    <h5>{{$cat->category_name}}</h5>
-                </div>
+        <div class="row" id="editRowCategory{{$cat->category_id}}">
+            <div class="col-3">
+                <h5>{{$cat->category_id}} </h5>
+            </div>
+            <div class="col-3">
+                <h5>{{$cat->category_name}}</h5>
+            </div>
 
-                <div class="col-3">
-                    <h5><a href="#" class="btn btn-primary" onClick="showUpdate({{$cat->category_id}});">Update</a></h5>
-                </div>
-                <div class="col-3">
-                    <a class="btn btn-danger" href="{{url('category/delete/')}}/{{$cat->category_id}}">
-                        DELETE
-                    </a>
-                </div>
+            <div class="col-3">
+                <h5><a href="#" class="btn btn-primary" onClick="showUpdate({{$cat->category_id}});">Update</a></h5>
+            </div>
+            <div class="col-3">
+                <a class="btn btn-danger" href="{{url('category/delete/')}}/{{$cat->category_id}}">
+                    DELETE
+                </a>
+            </div>
 
-                <hr />
+            <hr />
+        </div>
+
+
+        <form id="editFormCategory{{$cat->category_id}}" class="row d-none  justify-content-center text-center"
+            action="{{url('updatecategory')}}" method="post">
+            {{@csrf_field()}}
+            <div class="col-3">
+                <input type="text" disabled value="{{$cat->category_id}}" class="form-control">
+                <input type="hidden" name="categoryId" value="{{$cat->category_id}}">
+            </div>
+            <div class="col-3">
+                <input type="text" name="categoryName" class="form-control" value="{{$cat->category_name}}" required>
             </div>
 
 
-            <form id="editFormCategory{{$cat->category_id}}" class="row d-none  justify-content-center text-center"
-                action="{{url('updatecategory')}}" method="post">
-                {{@csrf_field()}}
-                <div class="col-3">
-                    <input type="text" disabled value="{{$cat->category_id}}" class="form-control">
-                    <input type="hidden" name="categoryId" value="{{$cat->category_id}}">
-                </div>
-                <div class="col-3">
-                    <input type="text" name="categoryName" class="form-control" value="{{$cat->category_name}}" required>
-                </div>
+            <div class="col-3">
+                <h5><input type="submit" value="Save" class="btn btn-primary"></h5>
 
-
-                <div class="col-3">
-                    <h5><input type="submit" value="Save" class="btn btn-primary"></h5>
-
-                </div>
-                <div class="col-3">
-                    <input type="button" value="Cancel" class="btn btn-dark" onClick="cancelEdit({{$cat->category_id}});">
-                </div>
-                <hr />
-            </form>
+            </div>
+            <div class="col-3">
+                <input type="button" value="Cancel" class="btn btn-dark" onClick="cancelEdit({{$cat->category_id}});">
+            </div>
+            <hr />
+        </form>
 
         @endforeach
     </div>
@@ -119,14 +120,14 @@
 <!-- ====================================== -->
 @endsection
 <script>
-    function showUpdate(id) {
-        console.log(id);
-        document.getElementById("editRowCategory" + id).classList.add("d-none");
-        document.getElementById("editFormCategory" + id).classList.remove("d-none");
-    }
+function showUpdate(id) {
+    console.log(id);
+    document.getElementById("editRowCategory" + id).classList.add("d-none");
+    document.getElementById("editFormCategory" + id).classList.remove("d-none");
+}
 
-    function cancelEdit(id) {
-        document.getElementById("editRowCategory" + id).classList.remove("d-none");
-        document.getElementById("editFormCategory" + id).classList.add("d-none");
-    }
+function cancelEdit(id) {
+    document.getElementById("editRowCategory" + id).classList.remove("d-none");
+    document.getElementById("editFormCategory" + id).classList.add("d-none");
+}
 </script>

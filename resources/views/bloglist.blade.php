@@ -1,4 +1,7 @@
 @extends('layouts.main')
+@push('title')
+<title>Blogs</title>
+@endpush
 @section('main-section')
 
 <section>
@@ -16,7 +19,7 @@
 
                         <div class="row g-2">
                             <div class="col-md-4">
-                                <img src="{{url('/uploads/img/' . $post->image)}}" class="img-fluid rounded-start"
+                                <img src="{{url('/uploads/' . $post->image)}}" class="img-fluid rounded-start"
                                     alt="...">
                             </div>
                             <div class="col-md-8">

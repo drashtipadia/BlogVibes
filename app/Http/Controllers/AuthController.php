@@ -12,7 +12,16 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
-        $this->validate($request, ['loginemail' => 'required|email', 'loginpwd' => 'required']);
+
+        $this->validate(
+            $request,
+            ['loginemail' => 'required|email', 'loginpwd' => 'required'],
+            [
+                'loginemail.required' => 'Email is Required',
+                'loginemail.email' => 'Email format is not valid ',
+                'loginpwd.required' => 'Password is Required'
+            ]
+        );
         $user = register_user::where('email', $request['loginemail'])->where('password', md5($request['loginpwd']))->first();
         if ($user) {
 
@@ -28,20 +37,37 @@ class AuthController extends Controller
     public function userRegister(Request $request)
     {
 
-        $this->validate($request, [
-            'rname' => 'required|alpha',
-            'remail' => 'required|email',
-            'rnumber' => 'required|numeric',
-            'aboutuser' => 'required',
-            'rpassword' => 'required',
-            'rcpassword' => 'required|same:rpassword'
-        ]);
+        $this->validate(
+            $request,
+            [
+                'rname' => 'required|alpha',
+                'email' => 'required|email|unique:users',
+                'rnumber' => 'required|digits:10',
+                'aboutuser' => 'required',
+                'rpassword' => 'required',
+                'rcpassword' => 'required|same:rpassword'
+            ],
+            [
+                'rname.required' => 'Name is Required',
+                'rname.alpha' => 'Name may only contain letters',
+                'email.required' => 'Email is Required',
+                'email' => 'Email is not validate',
+                'rnumber.required' => 'Number is required',
+                'rnumber.digits' => 'Number only contain 10 Digits',
+                'aboutuser.required' => 'Please tell something about yourself',
+                'rpassword.required' => 'Password is required',
+                'rcpassword.required' => 'Confirm Password is required',
+                'rcpassword.same' => 'Password and Confirm password not match'
 
-        //echo $request['rname'], $request['remail'], $request['aboutuser'], $request['rpassword'], $request['rnumber'];
+
+            ]
+        );
+
+        //echo $request['rname'], $request['email'], $request['aboutuser'], $request['rpassword'], $request['rnumber'];
 
         $newUser = new register_user();
         $newUser->name = $request['rname'];
-        $newUser->email = $request['remail'];
+        $newUser->email = $request['email'];
         $newUser->about_user = $request['aboutuser'];
         $newUser->password = md5($request['rpassword']);
         $newUser->number = $request['rnumber'];

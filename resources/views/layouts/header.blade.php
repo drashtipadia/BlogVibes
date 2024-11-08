@@ -7,7 +7,8 @@
     <link href="{{url('frontend/css/bootstrap.min.css')}}" rel="stylesheet" />
     <link href="{{url('frontend/css/all.min.css')}}" rel="stylesheet" />
     <link href="{{url('frontend/css/style.css')}}" rel="stylesheet" />
-    <title>Index</title>
+    <link rel="icon" href="{{url('frontend/images/BlogVibes.png')}}">
+    @stack('title')
 </head>
 
 <body>
@@ -35,15 +36,15 @@
 
                 @if (session()->has('id'))
 
-                    <a class="btn auth-btn px-4" type="button" href="{{url('profile')}}">{{session('name')}}</a>
-                    <a class="btn auth-btn px-4 m-2" type="button" href="{{url('createblog')}}">Create Blog</a>
-                    <a class="btn auth-btn px-4" type="button" href="{{url('logout')}}">Logout</a>
+                <a class="btn auth-btn px-4" type="button" href="{{url('profile')}}">{{session('name')}}</a>
+                <a class="btn auth-btn px-4 m-2" type="button" href="{{url('createblog')}}">Create Blog</a>
+                <a class="btn auth-btn px-4" type="button" href="{{url('logout')}}">Logout</a>
 
 
 
                 @else
-                    <a class="btn auth-btn px-4" type="button" href="{{url('login')}}">Login</a>
-                    <a class="btn auth-btn px-4 m-2" type="button" href="{{url('registration')}}">Register</a>
+                <a class="btn auth-btn px-4" type="button" href="{{url('login')}}">Login</a>
+                <a class="btn auth-btn px-4 m-2" type="button" href="{{url('registration')}}">Register</a>
 
                 @endif
 

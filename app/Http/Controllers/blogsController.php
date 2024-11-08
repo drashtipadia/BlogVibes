@@ -9,15 +9,7 @@ use Illuminate\Http\Request;
 
 class blogsController extends Controller
 {
-    //
-    public function display()
-    {
 
-        $category = new Category();
-        $categorys = Category::all();
-        $data = compact('categorys');
-        return view('createblog')->with($data);
-    }
     public function store(Request $request)
     {
         $this->validate($request, ['title' => 'required', 'content' => 'required', 'blogimg' => 'mimes:png,jpg,jpeg,webp', 'tags' => 'required', 'category' => 'required', 'userid' => 'required']);
@@ -27,8 +19,6 @@ class blogsController extends Controller
         $filename = time() . $request->file('blogimg')->getClientOriginalName();
         $path = 'uploads/';
         $request->file('blogimg')->move($path, $filename);
-
-
 
         $newPost = new Post();
         $newPost->title = $request['title'];
@@ -74,34 +64,6 @@ class blogsController extends Controller
             echo "<script> alert('something wrong'); </script>";
         }
     }
-
-
-
-
-    public function adminPostList()
-    {
-        // $postlist = Post::all();
-        // $postlists = compact('postlist', 'category');
-        // return view('Admin.adminbloglist')->with($postlists);
-        $postlist = Post::with('getcategory')->with('getUser')->get();
-        $postlist = compact('postlist');
-        return view('Admin.adminbloglist')->with($postlist);
-    }
-    public function adminblog($id)
-    {
-
-        $posts = Post::where('post_id', $id)->with('getcategory')->with('getUser')->get();
-        $posts = compact('posts');
-        return view('Admin.adminblogdetails')->with($posts);
-
-        // $post = Post::where('post_id', $id)->first();
-        // $user = register_user::where('user_id', $post->user_id)->first();
-        // $category = Category::where('category_id', $post->category_id)->first();
-
-        // $data = ['post' => $post, 'username' => $user->name, 'category' => $category->category_name];
-        // return view('Admin.adminblogdetails')->with(['data' => $data]);
-    }
-
     public function userbloglist($id)
     {
 
@@ -113,7 +75,7 @@ class blogsController extends Controller
     public function fullblog($id)
     {
         $posts = Post::where('post_id', $id)->with('getcategory')->with('getUser')->get();
-        $comments = Comment::where('post_id', $id)->with('get_user')->get();
+        $comments = Comment::where('post_id', $id)->where('com_status', '=', '1')->with('get_user')->get();
         $data = compact('posts', 'comments');
         return view('fullblog')->with($data);
 
@@ -138,6 +100,35 @@ class blogsController extends Controller
         $posts = compact('posts', 'categorys');
         return view('updateblog')->with($posts);
 
+    }
+
+    //========Admin============
+
+    public function adminPostList()
+    {
+        $postlist = Post::with('getcategory')->with('getUser')->get();
+        $postlist = compact('postlist');
+        return view('Admin.adminbloglist')->with($postlist);
+    }
+    public function adminblog($id)
+    {
+        $posts = Post::where('post_id', $id)->with('getcategory')->with('getUser')->get();
+        $posts = compact('posts');
+        return view('Admin.adminblogdetails')->with($posts);
+    }
+
+    public function statusupdate($id)
+    {
+        $res = Post::where('post_id', $id)->value('status');
+        if ($res === 1) {
+            Post::where('post_id', $id)->update(['status' => '0']);
+
+        } elseif ($res === 0) {
+            Post::where('post_id', $id)->update(['status' => '1']);
+        } else {
+            return redirect('adminBlogs')->with('statuschange', 'Status not Update');
+        }
+        return redirect('adminBlogs');
     }
 
 }

@@ -1,4 +1,7 @@
 @extends('admin.layout.main')
+@push('title')
+<title>Blog Details</title>
+@endpush
 @section('admin-section')
 
 <section>

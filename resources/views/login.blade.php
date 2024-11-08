@@ -1,4 +1,7 @@
 @extends('layouts.main')
+@push('title')
+    <title>Login</title>
+@endpush
 @section('main-section')
 <div class="container d-flex justify-content-center p-5 ">
 
@@ -24,13 +27,20 @@
                 <div>
                     <label class="form-label" for="typeEmail">Email</label>
                     <input type="text" id="" name="loginemail" class="form-control" />
+                    <div class="text-danger"> @if($errors->has('loginemail'))
+                        {{$errors->first('loginemail')}}
+                    @endif
 
+                    </div>
 
                 </div>
                 <div>
                     <label class="form-label" for="typePassword">Password</label>
-                    <input type="password" id="" name="loginpwd" class="form-control " required />
-
+                    <input type="password" id="" name="loginpwd" class="form-control " />
+                    <div class="text-danger"> @if($errors->has('loginpwd'))
+                        {{$errors->first('loginpwd')}}
+                    @endif
+                    </div>
                 </div>
             </div>
             <div class="card-footer d-flex text-muted justify-content-center p-3">

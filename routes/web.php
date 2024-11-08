@@ -49,7 +49,7 @@ Route::get('profile', 'UsersController@userprofile')->middleware('user');
 
 //blogs
 
-Route::get('createblog', 'blogsController@display')->middleware('user');
+Route::get('createblog', 'categoryController@blogcreate')->middleware('user');
 
 Route::post('addblog', 'blogsController@store')->middleware('user');
 Route::post('updateblog', 'blogsController@update')->middleware('user');
@@ -79,7 +79,6 @@ Route::get('indexAdmin', function () {
 })->middleware('admin');
 Route::get('adminlogout', 'AdminController@logout')->middleware('admin');
 //==============
-Route::get('categorydisplay', 'categoryController@display')->middleware('admin');
 Route::get('admincategory', 'categoryController@view')->middleware('admin');
 Route::post('category', 'categoryController@store')->middleware('admin');
 Route::post('updatecategory', 'categoryController@update')->middleware('admin');
@@ -93,5 +92,10 @@ Route::get('users', 'UsersController@display')->middleware('admin');
 //==================
 Route::get('adminBlogs', 'blogsController@adminPostList')->middleware('admin');
 Route::get('/blog/{id}', 'blogsController@adminblog')->middleware('admin');
+Route::get('blogstatuschange/{id}', 'blogsController@statusupdate')->middleware('admin');
 //==================
 Route::get('admincomments', 'commentController@admincommentlist')->middleware('admin');
+Route::get('comstatuschange/{id}', 'commentController@updatestatus')->middleware('admin');
+
+//=====================
+Route::get('total', 'AdminController@total')->middleware('admin');

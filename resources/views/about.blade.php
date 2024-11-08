@@ -1,4 +1,7 @@
 @extends('layouts.main')
+@push('title')
+<title>About us</title>
+@endpush
 @section('main-section')
 <section id="page-name">
     <div class="container h-200">
@@ -59,7 +62,7 @@
                             </P>
                         </div>
                         <div class="col-md-6 text-center">
-                            <img src="{{url('/frontend/images/img3.jpg')}}" class="img-fluid w-100 h-100  py-5" />
+                            <img src="{{url('/frontend/images/BlogVibes.png')}}" class="img-fluid w-100 h-100  py-5" />
                         </div>
                     </div>
                 </div>

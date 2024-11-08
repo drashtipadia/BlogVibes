@@ -7,8 +7,7 @@
     <link href="{{url('frontend/css/bootstrap.min.css')}}" rel="stylesheet" />
     <link href="{{url('frontend/css/all.min.css')}}" rel="stylesheet" />
     <link href="{{url('frontend/css/adminstyle.css')}}" rel="stylesheet" />
-
-
+    @stack('title')
 
 </head>
 
@@ -29,7 +28,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="{{url('categorydisplay')}}">Category</a>
+                    <a class="nav-link" href="{{url('admincategory')}}">Category</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{url('admincomments')}}">Comments</a>

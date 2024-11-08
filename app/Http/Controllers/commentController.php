@@ -28,4 +28,16 @@ class commentController extends Controller
         $data = compact('com');
         return view('Admin.admincomments')->with($data);
     }
+    public function updatestatus($id)
+    {
+        $com = Comment::where('comment_id', $id)->value('com_status');
+        if ($com === 1) {
+            Comment::where('comment_id', $id)->update(['com_status' => '0']);
+        } elseif ($com === 0) {
+            Comment::where('comment_id', $id)->update(['com_status' => '1']);
+        } else {
+            return redirect('admincomments')->with('status', 'Status Not Update');
+        }
+        return redirect('admincomments');
+    }
 }

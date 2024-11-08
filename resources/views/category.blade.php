@@ -1,4 +1,7 @@
 @extends('layouts.main')
+@push('title')
+<title>Category</title>
+@endpush
 @section('main-section')
 
 <section class="mt-5 mb-0">
