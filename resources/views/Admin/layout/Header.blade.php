@@ -44,7 +44,7 @@
                     <a class="nav-link" href="{{url('contactList')}}">Conatct user</a>
                 </li>
                 <li class="nav-item ">
-                    <a class="nav-link" href="#">Profile</a>
+                    <a class="nav-link" href="{{url('adminprofile')}}">Profile</a>
                 </li>
 
             </ul>

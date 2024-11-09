@@ -33,18 +33,18 @@
                 </div>
 
 
-
+                <a class="btn auth-btn px-4 m-2" type="button" href="{{url('createblog')}}">Create Blog</a>
                 @if (session()->has('id'))
 
-                <a class="btn auth-btn px-4" type="button" href="{{url('profile')}}">{{session('name')}}</a>
-                <a class="btn auth-btn px-4 m-2" type="button" href="{{url('createblog')}}">Create Blog</a>
-                <a class="btn auth-btn px-4" type="button" href="{{url('logout')}}">Logout</a>
+                    <a class="btn auth-btn px-4 m-2" type="button" href="{{url('profile')}}">{{session('name')}}</a>
+
+                    <a class="btn auth-btn px-4" type="button" href="{{url('logout')}}">Logout</a>
 
 
 
                 @else
-                <a class="btn auth-btn px-4" type="button" href="{{url('login')}}">Login</a>
-                <a class="btn auth-btn px-4 m-2" type="button" href="{{url('registration')}}">Register</a>
+                    <a class="btn auth-btn px-4" type="button" href="{{url('login')}}">Login</a>
+                    <a class="btn auth-btn px-4 m-2" type="button" href="{{url('registration')}}">Register</a>
 
                 @endif
 

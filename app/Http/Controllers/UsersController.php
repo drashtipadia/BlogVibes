@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Comment;
 use Illuminate\Http\Request;
 use App\Models\register_user;
 use App\Models\Post;
@@ -23,10 +24,10 @@ class UsersController extends Controller
         // echo session('name');
         $user = register_user::where('user_id', session('id'))->get();
         $post = Post::where('user_id', session('id'))->get();
-
+        $comment = Comment::where('user_id', session('id'))->with('get_post')->get();
         //echo $post;
 
-        $data = compact('post', 'user');
+        $data = compact('post', 'user', 'comment');
         return view('profile')->with($data);
 
 

@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Admin;
 use App\Models\Category;
 use App\Models\Comment;
 use App\Models\Post;
 use App\Models\register_user;
 use App\Models\UserContact;
 use Illuminate\Http\Request;
-use App\Models\admin;
+
 
 class AdminController extends Controller
 {
@@ -18,7 +19,7 @@ class AdminController extends Controller
         // echo $request['adminname'];
         // echo $request['adminpwd'];
 
-        $checkAdmin = admin::where('admin_name', $request['adminname'])->where('admin_pwd', $request['adminpwd'])->first();
+        $checkAdmin = Admin::where('admin_name', $request['adminname'])->where('admin_pwd', $request['adminpwd'])->first();
         if ($checkAdmin) {
             session()->put('a_id', $checkAdmin->admin_id);
             session()->put('a_name', $checkAdmin->admin_name);
@@ -44,8 +45,41 @@ class AdminController extends Controller
         $cat = Category::all()->count();
         $user = register_user::all()->count();
         $con = UserContact::all()->count();
-        $data = compact('post', 'com', 'cat', 'con', 'user');
-        print_r($data);
-        //     return view('Admin.indexAdmin')->with($data);
+        // echo $post, $com, $cat, $user, $con;
+        //$data = ['post' => $post, 'comment' => $com, 'category' => $cat, 'user' => $user, 'conatct' => $con];
+        //print_r($data);
+        $data = compact(['post', 'com', 'cat', 'con', 'user']);
+        //$er = compact('data');
+        return view('Admin.indexAdmin')->with($data);
+    }
+
+    public function profile()
+    {
+        $res = admin::all();
+        $data = compact('res');
+        return view('Admin.adminprofile')->with($data);
+    }
+    public function updatepwd(Request $request)
+    {
+        // echo $request['id'];
+        // echo $request['adminoldpwd'];
+        // echo $request['adminnewpwd'];
+        // echo $request['admincpwd'];
+
+        $this->validate(
+            $request,
+            ['adminoldpwd' => 'required', 'adminnewpwd' => 'required', 'admincpwd' => 'required|same:adminnewpwd']
+        );
+        $res = admin::where('admin_id', session('a_id'))->where('admin_pwd', $request['adminoldpwd'])->exists();
+        //echo $res;
+        if ($res == 1) {
+            $val = admin::where('admin_id', session('a_id'))->update(['admin_pwd' => $request['adminnewpwd']]);
+            if ($val == 1) {
+                echo "<script> alert('Password update successfully');</script>";
+                return redirect('adminprofile')->with('success', 'Password update successfully');
+            }
+        } else {
+            return redirect('adminprofile')->with('error', 'Current Password is wrong');
+        }
     }
 }

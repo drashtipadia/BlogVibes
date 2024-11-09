@@ -74,9 +74,7 @@ Route::get('admin', function () {
     return view('Admin.admin_login');
 });
 Route::post('adminlogin', 'AdminController@login');
-Route::get('indexAdmin', function () {
-    return view('Admin.indexAdmin');
-})->middleware('admin');
+Route::get('indexAdmin', 'AdminController@total')->middleware('admin');
 Route::get('adminlogout', 'AdminController@logout')->middleware('admin');
 //==============
 Route::get('admincategory', 'categoryController@view')->middleware('admin');
@@ -98,4 +96,5 @@ Route::get('admincomments', 'commentController@admincommentlist')->middleware('a
 Route::get('comstatuschange/{id}', 'commentController@updatestatus')->middleware('admin');
 
 //=====================
-Route::get('total', 'AdminController@total')->middleware('admin');
+Route::get('adminprofile', 'AdminController@profile')->middleware('admin');
+Route::post('updateadminpwd', 'AdminController@updatepwd')->middleware('admin');

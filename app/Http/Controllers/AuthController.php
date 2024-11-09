@@ -12,7 +12,6 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
-
         $this->validate(
             $request,
             ['loginemail' => 'required|email', 'loginpwd' => 'required'],
@@ -22,7 +21,8 @@ class AuthController extends Controller
                 'loginpwd.required' => 'Password is Required'
             ]
         );
-        $user = register_user::where('email', $request['loginemail'])->where('password', md5($request['loginpwd']))->first();
+
+        $user = register_user::where('email', '=', $request['loginemail'])->where('password', '=', md5($request['loginpwd']))->first();
         if ($user) {
 
             session()->put('id', $user->user_id);
@@ -40,7 +40,7 @@ class AuthController extends Controller
         $this->validate(
             $request,
             [
-                'rname' => 'required|alpha',
+                'rname' => 'required',
                 'email' => 'required|email|unique:users',
                 'rnumber' => 'required|digits:10',
                 'aboutuser' => 'required',
@@ -49,7 +49,6 @@ class AuthController extends Controller
             ],
             [
                 'rname.required' => 'Name is Required',
-                'rname.alpha' => 'Name may only contain letters',
                 'email.required' => 'Email is Required',
                 'email' => 'Email is not validate',
                 'rnumber.required' => 'Number is required',

@@ -43,5 +43,23 @@
             @endforeach
         </div>
     </div>
-</div>
-@endsection
+    <hr />
+    <div class="row bg-light">
+
+        <div class="col-6">
+            <h1 class="text-center ">Comments</h1>
+            <div class="row fs-5">
+                <div class="col-2">PostName</div>
+                <div class="col-4">Comment</div>
+            </div>
+            @foreach ($comment as $com)
+            <div class="row">
+                <div class="col-2">{{$com->get_post->title}}</div>
+                <div class="col-4">{{$com->comments}}</div>
+            </div>
+            @endforeach
+
+
+        </div>
+    </div>
+    @endsection
