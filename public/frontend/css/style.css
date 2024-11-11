@@ -4,8 +4,36 @@
     box-sizing: border-box;
 }
 
+@font-face {
+    font-family: Faculty Glyphic;
+    src: url(../Fonts/FacultyGlyphic-Regular.ttf);
+}
+
+@font-face {
+    font-family: Dancing script;
+    src: url(../Fonts/DancingScript-VariableFont_wght.ttf);
+}
+
+@font-face {
+    font-family: EduAus;
+    src: url(../Fonts/EduAustraila.ttf);
+}
+
+@font-face {
+    font-family: MPLUS;
+    src: url(../Fonts/MPLUSRounded1c-Regular.ttf);
+}
+
+.mplusfont {
+    font-family: MPLUS;
+}
+
+.FacultyGlyphic {
+    font-family: Faculty Glyphic;
+}
+
 .head {
-    background: #008489;
+    background: #618264;
 
 }
 
@@ -15,7 +43,9 @@
 }
 
 .head .navbar .navbar-nav a:hover {
-    background: #006669;
+
+    background: #79AC78;
+
     transition: 0.5s;
     border-radius: 5px;
     font-size: large;
@@ -34,11 +64,12 @@
 
 .head .auth-btn {
     background: white;
-    color: #008489;
+    color: #618264;
 }
 
 .head .dropdown-menu {
-    color: #008489;
+    /* color: #83916f; */
+    color: #618264;
     background: white;
 }
 
@@ -79,37 +110,10 @@
 }
 
 .home-back {
-    background-color: #006669;
+    background-color: #79AC78;
 }
 
-/* post slider */
-.post-slider {
-    border: 1px solid red;
-}
-
-.post-slider .post-wrapper {
-    border: 1px solid red;
-}
-
-.post-slider .post-wrapper .post {
-    height: 250px;
-    display: inline-block;
-    background: #05f7ff;
-}
-
-/* recent post */
-
-/* .content .main-content .post{
-    width: 95%;
-    height:270px;
-    margin: 10px auto;
-    border-radius: 5px;
-    background: white;
-} */
-
-.contentlimit {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    /* max-width: 1000px; */
+.all-btn {
+    background-color: #3a6139;
+    color: white;
 }

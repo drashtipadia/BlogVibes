@@ -1,6 +1,6 @@
 @extends('layouts.main')
 @push('title')
-<title>Registration</title>
+    <title>Registration</title>
 @endpush
 @section('main-section')
 
@@ -8,7 +8,7 @@
 
     <form method="post" action="{{url('user_register')}}" style="width: 600px;">
         {{@csrf_field()}}
-        <div class="card border-info">
+        <div class="card border-success">
             <div class="card-header text-center">
                 <h2> Registration </h2>
             </div>
@@ -18,7 +18,7 @@
                     <input type="text" id="rname" name="rname" class="form-control" />
                     <div class="text-danger">@if ($errors->has('rname'))
                         {{$errors->first('rname')}}
-                        @endif
+                    @endif
                     </div>
                 </div>
                 <div>
@@ -26,7 +26,7 @@
                     <input type="text" id="remail" name="email" class="form-control" />
                     <div class="text-danger">@if ($errors->has('email'))
                         {{$errors->first('email')}}
-                        @endif
+                    @endif
                     </div>
 
                 </div>
@@ -35,7 +35,7 @@
                     <input type="text" id="rnumber" name="rnumber" class="form-control" />
                     <div class="text-danger">@if ($errors->has('rnumber'))
                         {{$errors->first('rnumber')}}
-                        @endif
+                    @endif
                     </div>
 
                 </div>
@@ -44,7 +44,7 @@
                     <textarea id="about" name="aboutuser" class="form-control"></textarea>
                     <div class="text-danger">@if ($errors->has('aboutuser'))
                         {{$errors->first('aboutuser')}}
-                        @endif
+                    @endif
                     </div>
 
                 </div>
@@ -53,7 +53,7 @@
                     <input type="password" id="rpassword" name="rpassword" class="form-control" />
                     <div class="text-danger">@if ($errors->has('rpassword'))
                         {{$errors->first('rpassword')}}
-                        @endif
+                    @endif
                     </div>
                 </div>
                 <div>
@@ -61,14 +61,14 @@
                     <input type="password" id="rcpassword" name="rcpassword" class="form-control" />
                     <div class="text-danger">@if ($errors->has('rcpassword'))
                         {{$errors->first('rcpassword')}}
-                        @endif
+                    @endif
                     </div>
 
                 </div>
             </div>
             <div class="card-footer d-flex justify-content-center p-3">
 
-                <input type="submit" class="btn btn-primary w-50" value="Submit"></input>
+                <input type="submit" class="btn all-btn text-white w-50" value="Submit"></input>
 
             </div>
         </div>

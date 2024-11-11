@@ -10,9 +10,9 @@
 </div>
 <section>
     <div class="justify-content-center mt-3 mb-0">
-        @if (session()->has('status'))
+        @if (session()->has('comstatus'))
             <div class="alert alert-primary w-25 p-3">
-                {{session()->get('status')}}
+                {{session()->get('comstatus')}}
             </div>
         @endif
     </div>

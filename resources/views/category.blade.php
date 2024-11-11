@@ -1,6 +1,6 @@
 @extends('layouts.main')
 @push('title')
-<title>Category</title>
+    <title>Category</title>
 @endpush
 @section('main-section')
 
@@ -17,9 +17,12 @@
         <div class="row g-3">
             @foreach ($category as $val)
 
-
-            <a href="{{url('bloglist')}}/{{$val->category_id}}" class="btn btn-primary">{{$val->category_name}}</a>
-
+                <div class="col-4">
+                    <div class="badge btn w-100" style="background: #79AC78;">
+                        <a href="{{url('bloglist')}}/{{$val->category_id}}"
+                            class="btn w-100 text-white">{{$val->category_name}}</a>
+                    </div>
+                </div>
 
             @endforeach
         </div>

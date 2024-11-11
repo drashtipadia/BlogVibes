@@ -18,9 +18,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+// Route::get('/', function () {
+//     return view('index');
+// });
+
+Route::get('/', 'blogsController@index');
 
 Route::get('about', function () {
     return view('about');
@@ -38,14 +40,14 @@ Route::get('registration', function () {
     return view('registration');
 });
 
-
+//user
 Route::post('user_login', 'AuthController@login');
 Route::post('user_register', 'AuthController@userRegister');
 Route::post('contact', 'UserContactController@store');
 Route::get('logout', 'AuthController@logout');
-
 Route::get('profile', 'UsersController@userprofile')->middleware('user');
-
+Route::post('infoupdate', 'AuthController@update')->middleware('user');
+Route::post('passwordupdate', 'AuthController@pwdupdate')->middleware('user');
 
 //blogs
 
@@ -57,14 +59,19 @@ Route::post('updateblog', 'blogsController@update')->middleware('user');
 
 Route::get('bloglist/{id?}', 'blogsController@userbloglist');
 Route::get('blogdetails/{id}', 'blogsController@fullblog');
+Route::post('/searching', 'blogsController@searchquery');
+
+//==========
 Route::get('blogupdate/{id}', 'blogsController@updateblog')->middleware('user');
 Route::get('blogdelete/{id}', 'blogsController@deleteblog')->middleware('user');
 
-Route::post('/searching', 'blogsController@searchquery');
+
 
 
 //comment
 Route::post('addcomment', 'commentController@store')->middleware('user');
+Route::get('deletecomment/{id}', 'commentController@delete')->middleware('user');
+Route::get('comstatus/{id}', 'commentController@updatestatus')->middleware('user');
 
 
 // ------------ADMIN----------------------------------------------------------------------------

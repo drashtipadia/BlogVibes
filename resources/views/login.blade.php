@@ -7,7 +7,7 @@
 
     <form method="post" action="{{url('user_login')}}" style="width: 600px;">
         {{@csrf_field()}}
-        <div class="card border-info">
+        <div class="card border-success">
             <div class="card-header text-center">
                 <h2> Login </h2>
             </div>
@@ -44,7 +44,7 @@
                 </div>
             </div>
             <div class="card-footer d-flex text-muted justify-content-center p-3">
-                <button type="submit" class="btn btn-primary w-50 ">Login</button>
+                <button type="submit" class="btn text-white w-50 all-btn">Login</button>
             </div>
         </div>
     </form>

@@ -22,12 +22,26 @@ class commentController extends Controller
         }
         return redirect('blogdetails/' . $request['postid']);
     }
+    public function delete($id)
+    {
+        $res = Comment::find($id)->delete();
+        if ($res === 1) {
+            return back();
+        } else {
+            echo "<script> alert('something wrong...');</script>";
+            return back();
+        }
+    }
+
+    //=====Admin=====
     public function admincommentlist()
     {
         $com = Comment::with('get_post')->with('get_user')->get();
         $data = compact('com');
         return view('Admin.admincomments')->with($data);
     }
+
+    //=======both=======
     public function updatestatus($id)
     {
         $com = Comment::where('comment_id', $id)->value('com_status');
@@ -36,8 +50,9 @@ class commentController extends Controller
         } elseif ($com === 0) {
             Comment::where('comment_id', $id)->update(['com_status' => '1']);
         } else {
-            return redirect('admincomments')->with('status', 'Status Not Update');
+            return back()->with('comstatus', 'Status Not Update');
         }
-        return redirect('admincomments');
+        return back();
+
     }
 }

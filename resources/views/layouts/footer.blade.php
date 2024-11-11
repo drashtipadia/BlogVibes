@@ -11,23 +11,26 @@
 
 <body>
 
-    <footer class="text-light py-5 footer">
+    <footer class="text-light footer">
         <div class="container">
             <div class="row">
 
                 <!-- First Section -->
                 <div class="col-md-4 p-3 footer-about">
                     <h4>BlogVibes</h4>
-                    <p class="lead">GoodVibes is functional blogger website...............</p>
-                    <div class="contact">
-                        <span><i class="fa-solid fa-phone" style="color: #ffffff;"></i>&nbsp;123-456-789 </span><br />
-                        <span><i class="fa-solid fa-envelope" style="color: #ffffff;"></i>&nbsp; goodvibes@gmail.com
-                        </span>
-                    </div>
-                    <div class="socials">
-                        <a href="#"><i class="fa-brands fa-facebook fa-lg" style="color: #ffffff;"></i></a>
-                        <a href="#"><i class="fa-brands fa-instagram fa-lg" style="color: #ffffff;"></i></a>
-                        <a href="#"><i class="fa-brands fa-twitter fa-lg" style="color: #ffffff;"></i></a>
+                    <p class="mb-2">GoodVibes is functional blogger website. You can create blog as per category
+                        wise.Blogs many category avaliable as per trend.</p>
+
+                    <i class="fa-solid fa-phone" style="color: #ffffff;"></i>&nbsp;123-456-789
+                    <br />
+                    <i class="fa-solid fa-envelope" style="color: #ffffff;"></i>&nbsp; blogvibes@gmail.com
+
+
+
+                    <div class="socials mt-2">
+                        <a href="#"><i class="fa-brands fa-facebook fa-lg" style="color: #ffffff;"></i></a> &nbsp;
+                        <a href="#"><i class="fa-brands fa-instagram fa-lg" style="color: #ffffff;"></i></a> &nbsp;
+                        <a href="#"><i class="fa-brands fa-twitter fa-lg" style="color: #ffffff;"></i></a> &nbsp;
                         <a href="#"><i class="fa-brands fa-youtube fa-lg  " style="color: #ffffff;"></i></a>
                     </div>
                 </div>

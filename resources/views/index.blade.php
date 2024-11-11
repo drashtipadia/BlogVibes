@@ -3,107 +3,83 @@
 <title>Index</title>
 @endpush
 @section('main-section')
+<section class="m-5">
 
-<!-- page Wrapper -->
-<!-- <section class="container">
-        <div class="post-slider">
-            <h1 class="slider-title text-center">Trending Posts</h1>
-            <div class="post-wrapper">
-                <div class="card post" style="width: 18rem;">
-                    <img src="..." class="card-img-top" alt="...">
-                    <div class="card-body">
-                        1
-                    </div>
-                </div>
-                <div class="card post" style="width: 18rem;">
-                    <img src="..." class="card-img-top" alt="...">
-                    <div class="card-body">
-                        2
-                    </div>
-                </div>
-                <div class="card post" style="width: 18rem;">
-                    <img src="..." class="card-img-top" alt="...">
-                    <div class="card-body">
-                        3
-                    </div>
-                </div>
-                <div class="card post" style="width: 18rem;">
-                    <img src="..." class="card-img-top" alt="...">
-                    <div class="card-body">
-                        4
-                    </div>
-                </div>
-                <div class="card post" style="width: 18rem;">
-                    <img src="..." class="card-img-top" alt="...">
-                    <div class="card-body">
-                        5
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-    
-</section> -->
-
-<!-- user review start -->
-<section class="mt-5 mb-0">
-    <div class="container">
+    <div class="container py-3">
         <div class="row">
-            <div class="col text-center">
-                <h3>Trending Posts </h3>
-                <span class="line"></span>
+            @foreach ($randomblog as $blog)
+
+
+            <div class="col-md-4 ">
+
+                <div class=" text-center bg-light">
+                    <div class="py-2"><a href="{{url('bloglist')}}/{{$blog->category_id}}"
+                            class="text-dark">{{$blog->getcategory->category_name}}</a></div>
+                    <p class="fs-5 FacultyGlyphic mb-2">{{$blog->title}}</p>
+
+
+                    <a href="{{url('/blogdetails/')}}/{{$blog->post_id}}">
+                        <img src="{{url('/uploads/')}}/{{$blog->image}}" class="w-100" height="300px">
+                    </a>
+                </div>
             </div>
+            @endforeach
         </div>
+
     </div>
+
 </section>
-<section class="mb-5">
-
-    <div class="container home-back  py-3">
-
-        <div class="row justify-content-around">
-
-            <div class="col-lg-4 col-md-6">
-                <div class="card w-100 h-100">
-                    <div class="card-body">
-                        <h5 class="card-title">Welcome</h5>
-
-                        <p class="card-text">Posts 1</p>
-
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="card w-100 h-100">
-                    <div class="card-body">
-                        <h5 class="card-title">Welcome</h5>
-
-                        <p class="card-text">Posts 2</p>
-
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="card w-100 h-100">
-                    <div class="card-body">
-                        <h5 class="card-title">Welcome</h5>
-
-                        <p class="card-text">Posts 3</p>
-
-                    </div>
-                </div>
-            </div>
-        </div>
+<section class="container">
+    <hr />
+    <div class="justify-content-center d-flex p-4"><i class="fa-solid fa-heart fa-2xl" style="color: #3a6139;"></i>
     </div>
-
+    <div class="text-center fw-bold" style="font-family: EduAus;">
+        <p class="lead fs-3">"This is Message from the Blogger,</p>
+        <p class="lead fs-3">Write Something Inspirational for</p>
+        <p class="lead fs-3">the Readers To Enjoy"</p>
+    </div>
+    <hr />
 </section>
 <!-- content start -->
 <section class="container content">
     <div class="row">
         <div class="main-content col-8">
-            <h1 class="recent-post-title">Recent Posts</h1>
+            <h1 class="recent-post-title m-3 FacultyGlyphic">Recent Posts</h1>
 
-            <div class="card mb-3" style="max-width:100%;">
+            @foreach ($recent as $rec)
+
+            <div class="card m-3 w-100" style="height:250px;">
+                <div class="row">
+                    <div class="col-md-4">
+                        <img src="{{url('/uploads/')}}/{{$rec->image}}" class="rounded-start rounded-end" alt="..."
+                            width="100%" height="248px">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body bg-white p-0">
+                            <h4 class="card-title py-3 FacultyGlyphic">{{$rec->title}}</h4>
+                            <i class="fa-solid fa-user"></i> {{$rec->getUser->name}}
+                            &nbsp;
+                            <i class="fa-solid fa-calendar-days"></i>&nbsp;{{$rec->created_at->format('d-M-Y')}}
+                            <br />
+                            <p class=" mt-2">
+                                <!-- Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                Earum reprehenderit accusamus animi repellat eius debitis. -->
+                                {{substr($rec->content, 0, 159) . '...'}}
+
+                            </p>
+
+                        </div>
+                        <div class="d-md-flex justify-content-md-end px-2">
+                            <a href="{{url('blogdetails/')}}/{{$rec->post_id}}"
+                                class="btn btn-outline-light rounded-1 border border-dark" style="color:black;"
+                                type="button">Read More</a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            @endforeach
+            <!-- <div class="card mb-3" style="max-width: 100%;">
                 <div class="row g-0">
                     <div class="col-md-4">
                         <img src="{{url('/frontend/images/img1.jpg')}}" class="img-fluid rounded-start" alt="..."
@@ -180,33 +156,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="card mb-3" style="max-width: 100%;">
-                <div class="row g-0">
-                    <div class="col-md-4">
-                        <img src="{{url('/frontend/images/img1.jpg')}}" class="img-fluid rounded-start" alt="..."
-                            style="height:100%">
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card-body bg-white">
-                            <h5 class="card-title"><a href="#">The strongest and sweetesr song yet remian to
-                                    besung</a></h5>
-                            <i class="fa-solid fa-user"></i> Anaya Pande
-                            &nbsp;
-                            <i class="fa-solid fa-calendar-days"></i>11 march 2019
-                            <br />
-                            <p class="lead">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                Earum reprehenderit accusamus animi repellat eius debitis.
-                            </p>
-                            <div class="d-grid d-md-flex justify-content-md-end">
-                                <a href="#" class="btn btn-outline-light rounded-1 border border-dark"
-                                    style="color:black;" type="button">Read More</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            </div> -->
 
 
 

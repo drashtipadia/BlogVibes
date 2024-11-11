@@ -86,4 +86,37 @@ class AuthController extends Controller
         return redirect('/');
 
     }
+    public function update(Request $request)
+    {
+        // echo $request['id'], $request['name'], $request['number'], $request['userinfo'];
+        $this->validate($request, [
+            'number' => 'digits:10',
+        ]);
+        $res = register_user::where('user_id', $request['id'])->update(['name' => $request['name'], 'about_user' => $request['userinfo'], 'number' => $request['number']]);
+        if ($res === 1) {
+            return redirect('profile')->with('userinfosuccess', 'Details Update Successfully');
+        } else {
+            return back();
+        }
+
+    }
+    public function pwdupdate(Request $request)
+    {
+        $this->validate(
+            $request,
+            ['oldpwd' => 'required', 'newpwd' => 'required', 'confirmpwd' => 'required|same:newpwd'],
+            ['confirmpwd.same' => 'New Password and Confirm Password not match']
+        );
+        $res = register_user::where('user_id', $request['id'])->where('password', md5($request['oldpwd']))->exists();
+        //echo $res;
+        if ($res == 1) {
+            $val = register_user::where('user_id', $request['id'])->update(['password' => md5($request['newpwd'])]);
+            if ($val == 1) {
+
+                return redirect('profile')->with('pwdsuccess', 'Password update successfully');
+            }
+        } else {
+            return redirect('profile')->with('pwderror', 'Current Password is wrong');
+        }
+    }
 }

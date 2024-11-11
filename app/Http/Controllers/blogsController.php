@@ -10,6 +10,14 @@ use Illuminate\Http\Request;
 class blogsController extends Controller
 {
 
+
+    public function index()
+    {
+        $recent = Post::latest()->take(4)->with('getUser')->get();
+        $randomblog = Post::inRandomOrder()->with('getcategory')->limit(3)->get();
+        $data = compact('recent', 'randomblog');
+        return view('index')->with($data);
+    }
     public function store(Request $request)
     {
         $this->validate($request, ['title' => 'required', 'content' => 'required', 'blogimg' => 'mimes:png,jpg,jpeg,webp', 'tags' => 'required', 'category' => 'required', 'userid' => 'required']);
@@ -19,7 +27,6 @@ class blogsController extends Controller
         $filename = time() . $request->file('blogimg')->getClientOriginalName();
         $path = 'uploads/';
         $request->file('blogimg')->move($path, $filename);
-
         $newPost = new Post();
         $newPost->title = $request['title'];
         $newPost->content = $request['content'];
@@ -59,7 +66,7 @@ class blogsController extends Controller
     {
         $res = Post::find($id)->delete();
         if ($res === 1) {
-            return redirect();
+            return redirect('profile');
         } else {
             echo "<script> alert('something wrong'); </script>";
         }
