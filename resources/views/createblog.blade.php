@@ -1,6 +1,6 @@
 @extends('layouts.main')
 @push('title')
-<title>Create Blog</title>
+    <title>Create Blog</title>
 @endpush
 @section('main-section')
 <div class="container justify-content-between p-5">
@@ -13,9 +13,9 @@
             </div>
             <div class="card-body">
                 @if (session()->has('success'))
-                <div class="alert alert-success">
-                    <p>{{session()->get('success')}}</p>
-                </div>
+                    <div class="alert alert-success">
+                        <p>{{session()->get('success')}}</p>
+                    </div>
                 @endif
 
                 <!--  @if (session()->has('error'))
@@ -28,6 +28,11 @@
                     <div class="col-auto"><label class="form-label" for="typeTitle">Title</label>
                     </div>
                     <div class="col"><input type="text" id="" name="title" class="form-control" required /></div>
+                    <div class="text-danger"> @if($errors->has('title'))
+                        {{$errors->first('title')}}
+                    @endif
+
+                    </div>
 
                 </div>
                 <div class="row g-3 mb-3">
@@ -47,9 +52,9 @@
                 <div class="row g-3 mb-3">
                     <div class="col-auto"><label class="form-label" for="typecategory">Category</label></div>
                     <div class="col"><select class="form-select" aria-label="Default select example" name="category">
-                            <option hidden selected>Open this select menu</option>
+                            <option hidden selected value="1">Open this select menu</option>
                             @foreach ($categorys as $category)
-                            <option value="{{$category->category_id}}">{{$category->category_name}}</option>
+                                <option value="{{$category->category_id}}">{{$category->category_name}}</option>
                             @endforeach
                         </select></div>
                 </div>

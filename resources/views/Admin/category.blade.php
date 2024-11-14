@@ -18,13 +18,15 @@
             <h3> Add New Category </h3>
 
 
-            <form method="post" id="addcategory" action="{{url('category')}}">
+            <form method="post" name="categoryform" action="{{url('category')}}" onsubmit="return validateForm()">
                 {{@csrf_field()}}
 
                 <div class="justify-content-center row mt-3">
                     <div class="col-auto">
                         <input type="text" name="categoryname" id="categoryname" class="form-control"
                             placeholder="Catrgory..." required>
+                        <label for="categorymsg" id="categorymsg" class=" d-none text-danger form-label mb-3">Add
+                            Category</label>
                     </div>
                     <div class="col-auto">
                         <input type="submit" class="btn btn-primary w-100" value="ADD" />
@@ -50,6 +52,7 @@
 
 <section class="py-3">
     <div class="container justify-content-center text-center">
+        <p class="text-danger">must contain at least 1 category</p>
         <div class="row fs-5 fw-bold">
             <div class="col-3">
                 ID
@@ -93,7 +96,7 @@
 
 
         <form id="editFormCategory{{$cat->category_id}}" class="row d-none  justify-content-center text-center"
-            action="{{url('updatecategory')}}" method="post">
+            action="{{url('updatecategory')}}" method="post" name="updateform" onsubmit="return updateValidate()">
             {{@csrf_field()}}
             <div class="col-3">
                 <input type="text" disabled value="{{$cat->category_id}}" class="form-control">
@@ -120,8 +123,24 @@
 <!-- ====================================== -->
 @endsection
 <script>
+function validateForm() {
+    let x = document.forms["categoryform"]["categoryname"].value.trim();
+    if (x === "") {
+        alert("Category must be filled out");
+        return false;
+    }
+}
+
+function updateValidate() {
+    let x = document.forms["updateform"]["categoryName"].value.trim();
+    if (x === "") {
+        alert("Category must be filled out");
+        return false;
+    }
+}
+
 function showUpdate(id) {
-    console.log(id);
+
     document.getElementById("editRowCategory" + id).classList.add("d-none");
     document.getElementById("editFormCategory" + id).classList.remove("d-none");
 }

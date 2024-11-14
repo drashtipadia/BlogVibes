@@ -20,7 +20,7 @@ class blogsController extends Controller
     }
     public function store(Request $request)
     {
-        $this->validate($request, ['title' => 'required', 'content' => 'required', 'blogimg' => 'mimes:png,jpg,jpeg,webp', 'tags' => 'required', 'category' => 'required', 'userid' => 'required']);
+        $this->validate($request, ['title' => 'required|max:50', 'content' => 'required', 'blogimg' => 'mimes:png,jpg,jpeg,webp', 'tags' => 'required', 'category' => 'required', 'userid' => 'required'], ['title.max' => 'Title must be 50 character only..']);
 
         // $filename = $request->file('blogimg')->move('upload');
 

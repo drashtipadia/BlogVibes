@@ -19,7 +19,7 @@ class CreatePostTable extends Migration
             $table->string('title', 50);
             $table->text('content');
             $table->string('image', 100);
-            $table->text('tags');
+            $table->string('tags');
             $table->integer('category_id')->unsigned();
             $table->foreign('category_id')->references('category_id')->on('category')->onDelete('cascade')->onUpdate('cascade');
             $table->integer('user_id')->unsigned();
