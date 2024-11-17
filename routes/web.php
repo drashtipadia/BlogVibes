@@ -98,6 +98,7 @@ Route::get('users', 'UsersController@display')->middleware('admin');
 Route::get('adminBlogs', 'blogsController@adminPostList')->middleware('admin');
 Route::get('/blog/{id}', 'blogsController@adminblog')->middleware('admin');
 Route::get('blogstatuschange/{id}', 'blogsController@statusupdate')->middleware('admin');
+Route::get('blogsdelete/{id}', 'blogsController@deleteblog')->middleware('admin');
 //==================
 Route::get('admincomments', 'commentController@admincommentlist')->middleware('admin');
 Route::get('comstatuschange/{id}', 'commentController@updatestatus')->middleware('admin');

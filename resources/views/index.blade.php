@@ -1,6 +1,6 @@
 @extends('layouts.main')
 @push('title')
-    <title>Index</title>
+<title>Index</title>
 @endpush
 @section('main-section')
 <section class="m-5">
@@ -10,19 +10,19 @@
             @foreach ($randomblog as $blog)
 
 
-                <div class="col-md-4 ">
+            <div class="col-md-4 ">
 
-                    <div class=" text-center bg-light">
-                        <div class="py-2"><a href="{{url('bloglist')}}/{{$blog->category_id}}"
-                                class="text-dark">{{$blog->getcategory->category_name}}</a></div>
-                        <p class="fs-5 FacultyGlyphic mb-2">{{$blog->title}}</p>
+                <div class=" text-center bg-light">
+                    <div class="py-2"><a href="{{url('bloglist')}}/{{$blog->category_id}}"
+                            class="text-dark">{{$blog->getcategory->category_name}}</a></div>
+                    <p class="fs-5 FacultyGlyphic mb-2">{{$blog->title}}</p>
 
 
-                        <a href="{{url('/blogdetails/')}}/{{$blog->post_id}}">
-                            <img src="{{url('/uploads/')}}/{{$blog->image}}" class="w-100" height="300px">
-                        </a>
-                    </div>
+                    <a href="{{url('/blogdetails/')}}/{{$blog->post_id}}">
+                        <img src="{{url('/uploads/')}}/{{$blog->image}}" class="w-100" height="300px">
+                    </a>
                 </div>
+            </div>
             @endforeach
         </div>
 
@@ -48,36 +48,36 @@
 
             @foreach ($recent as $rec)
 
-                <div class="card m-3 w-100">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <img src="{{url('/uploads/')}}/{{$rec->image}}" class="rounded-start rounded-end" alt="..."
-                                width="100%" height="248px">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body bg-white p-0">
-                                <h4 class="card-title py-3 FacultyGlyphic">{{$rec->title}}</h4>
-                                <i class="fa-solid fa-user"></i> {{$rec->getUser->name}}
-                                &nbsp;
-                                <i class="fa-solid fa-calendar-days"></i>&nbsp;{{$rec->created_at->format('d-M-Y')}}
-                                <br />
-                                <p class=" mt-2">
-                                    <!-- Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        Earum reprehenderit accusamus animi repellat eius debitis. -->
-                                    {{substr($rec->content, 0, 159) . '...'}}
+            <div class="card m-3 w-100">
+                <div class="row">
+                    <div class="col-md-4">
+                        <img src="{{url('/uploads/')}}/{{$rec->image}}" class="rounded-start rounded-end" alt="..."
+                            width="100%" height="248px">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body bg-white p-0">
+                            <h4 class="card-title py-3 FacultyGlyphic">{{$rec->title}}</h4>
+                            <i class="fa-solid fa-user"></i> {{$rec->getUser->name}}
+                            &nbsp;
+                            <i class="fa-solid fa-calendar-days"></i>&nbsp;{{$rec->created_at->format('d-M-Y')}}
+                            <br />
+                            <p class=" mt-2">
+                                <!-- Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                Earum reprehenderit accusamus animi repellat eius debitis. -->
+                                {{substr($rec->content, 0, 159) . '...'}}
 
-                                </p>
-
-                            </div>
-                            <div class="d-md-flex justify-content-md-end px-2">
-                                <a href="{{url('blogdetails/')}}/{{$rec->post_id}}"
-                                    class="btn btn-outline-light rounded-1 border border-dark" style="color:black;"
-                                    type="button">Read More</a>
-                            </div>
+                            </p>
 
                         </div>
+                        <div class="d-md-flex justify-content-md-end px-2">
+                            <a href="{{url('blogdetails/')}}/{{$rec->post_id}}"
+                                class="btn btn-outline-light rounded-1 border border-dark" style="color:black;"
+                                type="button">Read More</a>
+                        </div>
+
                     </div>
                 </div>
+            </div>
             @endforeach
         </div>
         <div class="sidebar col-lg-4 py-5">
@@ -101,15 +101,15 @@
     <div class="container">
         <div class="row text-center text-white" id="counterSection">
             <div class="col">
-                <h1 class="text-center" id="counter">200</h1>
+                <h1 class="text-center" id="counter">{{$usercount}}</h1>
                 <p>Blogger</p>
             </div>
             <div class="col">
-                <h1 class="text-center" id="counter1">500</h1>
+                <h1 class="text-center" id="counter1">{{$blogcount}}</h1>
                 <p>Blog</p>
             </div>
             <div class="col">
-                <h1>2023</h1>
+                <h1>2024</h1>
                 <p>Since</p>
             </div>
         </div>

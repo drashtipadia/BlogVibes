@@ -5,6 +5,7 @@ use App\Models\Category;
 use App\Models\Comment;
 use App\Models\Post;
 
+use App\Models\register_user;
 use Illuminate\Http\Request;
 
 class blogsController extends Controller
@@ -13,9 +14,11 @@ class blogsController extends Controller
 
     public function index()
     {
-        $recent = Post::latest()->take(4)->with('getUser')->get();
+        $recent = Post::latest()->take(3)->with('getUser')->get();
         $randomblog = Post::inRandomOrder()->with('getcategory')->limit(3)->get();
-        $data = compact('recent', 'randomblog');
+        $usercount = register_user::all()->count();
+        $blogcount = Post::all()->count();
+        $data = compact('recent', 'randomblog', 'usercount', 'blogcount');
         return view('index')->with($data);
     }
     public function store(Request $request)
@@ -66,9 +69,9 @@ class blogsController extends Controller
     {
         $res = Post::find($id)->delete();
         if ($res === 1) {
-            return redirect('profile');
+            return back();
         } else {
-            echo "<script> alert('something wrong'); </script>";
+            return back()->with('errordelete', 'Blogs can not deleted');
         }
     }
     public function userbloglist($id)
