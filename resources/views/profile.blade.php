@@ -158,6 +158,9 @@
             <div class="card  h-100">
                 <h1 class="text-center m-3">Comments</h1>
 
+                @if ($comment->isEmpty())
+                <h4 class="text-center">No comments</h4>
+                @else
                 @foreach ($comment as $com)
                 <div class="row px-4 mt-3">
                     <div class="col-auto">
@@ -182,6 +185,7 @@
                 </div>
                 <hr />
                 @endforeach
+                @endif
             </div>
         </div>
     </div>
