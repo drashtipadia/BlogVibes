@@ -1,6 +1,6 @@
 @extends('layouts.main')
 @push('title')
-    <title>Blog</title>
+<title>Blog</title>
 @endpush
 @section('main-section')
 
@@ -8,20 +8,20 @@
     <div class="container p-5 bg-light">
 
         @foreach ($posts as $val)
-            <div class="">
-                <div class="fs-1 text-center mb-3 FacultyGlyphic">{{$val->title}}</div>
+        <div class="">
+            <div class="fs-1 text-center mb-3 FacultyGlyphic">{{$val->title}}</div>
 
-                <div class="m-2 fs-5">{{$val->created_at->format('F d, Y')}} by <span
-                        class="fst-italic text-decoration-underline">{{$val->getUser->name}}</span></div>
+            <div class="m-2 fs-5">{{$val->created_at->format('F d, Y')}} by <span
+                    class="fst-italic text-decoration-underline">{{$val->getUser->name}}</span></div>
 
-                <p class="fw-normal">&emsp; &emsp; &emsp; &emsp; {{$val->content}}</p>
-                <div class="justify-content-center d-flex p-3"> <img src="{{url('/uploads/' . $val->image)}}" width="600px"
-                        height="350px" />
-                </div>
-                <div><i class="fa-solid fa-tag"></i>&emsp;{{$val->tags}}</div>
-                <div><i class="fa-solid fa-folder"></i>&emsp;{{$val->getcategory->category_name}}</div>
-
+            <p class="fw-normal">&emsp; &emsp; &emsp; &emsp; {{$val->content}}</p>
+            <div class="justify-content-center d-flex p-3"> <img src="{{url('/uploads/' . $val->image)}}" width="600px"
+                    height="350px" />
             </div>
+            <div><i class="fa-solid fa-tag"></i>&emsp;{{$val->tags}}</div>
+            <div><i class="fa-solid fa-folder"></i>&emsp;{{$val->getcategory->category_name}}</div>
+
+        </div>
         @endforeach
     </div>
 
@@ -29,22 +29,22 @@
         <h5><i class="fa-solid fa-comments"></i> Comments</h5>
         @foreach ($comments as $com)
 
-            <div class="border border-dark m-2 p-2">
-                <i class="fa-solid fa-user"></i> &nbsp; {{$com->get_user->name}}
+        <div class="border border-dark m-2 p-2">
+            <i class="fa-solid fa-user"></i> &nbsp; {{$com->get_user->name}}
 
-                <br />
-                {{$com->comments}} &nbsp;
-                @if ($com->get_post->user_id === session('id'))
+            <br />
+            {{$com->comments}} &nbsp;
+            @if ($com->get_post->user_id === session('id'))
 
-                    <a href="{{url('comstatuschange/')}}/{{$com->comment_id}}">Hide</a>
+            <a href="{{url('comstatus/')}}/{{$com->comment_id}}">Hide</a>
 
-                @endif
-                @if($com->user_id === session('id') || $com->post_id === session('id'))
-                    <a href="{{url('deletecomment/')}}/{{$com->comment_id}}" class="text-danger"> <i
-                            class="fa-solid fa-trash"></i></a>
-                @endif
+            @endif
+            @if($com->user_id === session('id') || $com->post_id === session('id'))
+            <a href="{{url('deletecomment/')}}/{{$com->comment_id}}" class="text-danger"> <i
+                    class="fa-solid fa-trash"></i></a>
+            @endif
 
-            </div>
+        </div>
 
         @endforeach
 

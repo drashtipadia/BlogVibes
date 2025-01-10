@@ -25,8 +25,8 @@
                 </div>
                 <div class="row g-3 mb-3">
                     <div class="col-auto"><label class="form-label" for="typecontent">Content</label></div>
-                    <div class="col"><input name="content" class="form-control" required value="{{$val->content}}"
-                            height="20" />
+                    <div class="col"><textarea name="content" class="form-control" required
+                            rows="8">{{$val->content}} </textarea>
                     </div>
 
                 </div>
