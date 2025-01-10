@@ -1,4 +1,7 @@
 # Laravel 5.4 blog project
+Laravel version -5.4.0
+Php version -5.6.40
+WampServe -3.1.9
 
 ## Installation
 
@@ -6,18 +9,20 @@ Setting up your development environment on your local machine:
 
 ```bash
 $ git clone https://github.com/drashtipadia/BlogVibes.git
+```
 
-use php 5.6.40 version
 And Blogvibes project run on wamp/xammp
 Migrate the database using
 
+```bash
 $ php artisan migration
-
+```
 after run this commnad
-
+```bash
 $ php artisan serve
+```
 
-run project in localhost:8000 port
+Run project on localhost:8000 port
 
 
 ## License
